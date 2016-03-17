@@ -16,7 +16,6 @@ namespace StickyNote
     {
         //フィールド変数の定義
         Point mousepoint;
-        bool hyperlink;
         //色
         private Color yellow = Color.FromArgb(255, 255, 192);
         private Color green = Color.FromArgb(192, 255, 192);
@@ -27,11 +26,11 @@ namespace StickyNote
 
         public bool isHyperLink()
         {
-            return hyperlink;
+            return superRichTextBox1.DetectUrls;
         }
         public void setHyperLink(bool hyper)
         {
-            hyperlink = hyper;
+            superRichTextBox1.DetectUrls = hyper;
         }
 
         public NoteForm()
@@ -103,6 +102,7 @@ namespace StickyNote
             titleTextBox.Visible = false;
         }
 
+
         /********************************************************
         ** closeButton
         */
@@ -119,6 +119,7 @@ namespace StickyNote
         {   //plusButtonで新規ノート作成
             ((MainForm)Owner).newNote();
         }
+
 
         /********************************************************
         ** superRichTextBox
@@ -138,6 +139,12 @@ namespace StickyNote
         {
             superRichTextBox1.LoadFile(filename);
         }
+
+        private void superRichTextBox1_LinkClicked(object sender, LinkClickedEventArgs e)
+        {   //リンククリック時
+            System.Diagnostics.Process.Start(e.LinkText);
+        }
+
 
         /********************************************************
         ** ウインドウサイズ変更
@@ -259,7 +266,27 @@ namespace StickyNote
 
         private void hyperlinkToolStripMenuItem_Click(object sender, EventArgs e)
         {   //ハイパーリンク
-            
+            if (isHyperLink() == true)
+            {   //ハイパーリンクONならOFF
+                setHyperLink(false);
+            }
+            else
+            {   //ハイパーリンクOFFならON
+                setHyperLink(true);
+            }
         }
+
+        private void contextMenuStrip1_Opening(object sender, CancelEventArgs e)
+        {   //メニューストリップ表示時
+            if (isHyperLink() == true)
+            {   //ハイパーリンクONならチェック
+                hyperlinkToolStripMenuItem.Checked = true;
+            }
+            else
+            {   //ハイパーリンクOFFならチェック外す
+                hyperlinkToolStripMenuItem.Checked = false;
+            }
+        }
+
     }
 }

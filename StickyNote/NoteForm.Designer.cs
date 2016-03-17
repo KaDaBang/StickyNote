@@ -30,10 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             this.titleLabel = new System.Windows.Forms.Label();
-            this.plusButton = new System.Windows.Forms.Button();
-            this.closeButton = new System.Windows.Forms.Button();
-            this.superRichTextBox1 = new SRichTextBoxLibrary.SuperRichTextBox();
-            this.titleTextBox = new System.Windows.Forms.TextBox();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.yellowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.greenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -43,6 +39,10 @@
             this.whiteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.hyperlinkToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.plusButton = new System.Windows.Forms.Button();
+            this.closeButton = new System.Windows.Forms.Button();
+            this.superRichTextBox1 = new SRichTextBoxLibrary.SuperRichTextBox();
+            this.titleTextBox = new System.Windows.Forms.TextBox();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -61,70 +61,6 @@
             this.titleLabel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.titleLabel_MouseDown);
             this.titleLabel.MouseMove += new System.Windows.Forms.MouseEventHandler(this.titleLabel_MouseMove);
             // 
-            // plusButton
-            // 
-            this.plusButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.plusButton.FlatAppearance.BorderSize = 0;
-            this.plusButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.plusButton.Location = new System.Drawing.Point(4, 4);
-            this.plusButton.Margin = new System.Windows.Forms.Padding(0);
-            this.plusButton.Name = "plusButton";
-            this.plusButton.Size = new System.Drawing.Size(20, 20);
-            this.plusButton.TabIndex = 0;
-            this.plusButton.TabStop = false;
-            this.plusButton.Text = "+";
-            this.plusButton.UseCompatibleTextRendering = true;
-            this.plusButton.UseVisualStyleBackColor = false;
-            this.plusButton.Click += new System.EventHandler(this.plusButton_Click);
-            // 
-            // closeButton
-            // 
-            this.closeButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.closeButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.closeButton.FlatAppearance.BorderSize = 0;
-            this.closeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.closeButton.Location = new System.Drawing.Point(159, 4);
-            this.closeButton.Margin = new System.Windows.Forms.Padding(0);
-            this.closeButton.Name = "closeButton";
-            this.closeButton.Size = new System.Drawing.Size(20, 20);
-            this.closeButton.TabIndex = 0;
-            this.closeButton.TabStop = false;
-            this.closeButton.Text = "×";
-            this.closeButton.UseCompatibleTextRendering = true;
-            this.closeButton.UseVisualStyleBackColor = false;
-            this.closeButton.Click += new System.EventHandler(this.closeButton_Click);
-            // 
-            // superRichTextBox1
-            // 
-            this.superRichTextBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.superRichTextBox1.BackColor = this.BackColor;
-            this.superRichTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.superRichTextBox1.DetectUrls = false;
-            this.superRichTextBox1.Location = new System.Drawing.Point(4, 28);
-            this.superRichTextBox1.Name = "superRichTextBox1";
-            this.superRichTextBox1.Size = new System.Drawing.Size(174, 150);
-            this.superRichTextBox1.TabIndex = 0;
-            this.superRichTextBox1.TabStop = false;
-            this.superRichTextBox1.Text = "";
-            // 
-            // titleTextBox
-            // 
-            this.titleTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.titleTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.titleTextBox.Font = new System.Drawing.Font("メイリオ", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.titleTextBox.Location = new System.Drawing.Point(24, 4);
-            this.titleTextBox.Margin = new System.Windows.Forms.Padding(0);
-            this.titleTextBox.Name = "titleTextBox";
-            this.titleTextBox.Size = new System.Drawing.Size(136, 23);
-            this.titleTextBox.TabIndex = 0;
-            this.titleTextBox.TabStop = false;
-            this.titleTextBox.Visible = false;
-            this.titleTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
-            this.titleTextBox.Leave += new System.EventHandler(this.textBox1_Leave);
-            // 
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -138,6 +74,7 @@
             this.hyperlinkToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(161, 164);
+            this.contextMenuStrip1.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip1_Opening);
             // 
             // yellowToolStripMenuItem
             // 
@@ -192,6 +129,71 @@
             this.hyperlinkToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
             this.hyperlinkToolStripMenuItem.Text = "ハイパーリンク";
             this.hyperlinkToolStripMenuItem.Click += new System.EventHandler(this.hyperlinkToolStripMenuItem_Click);
+            // 
+            // plusButton
+            // 
+            this.plusButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.plusButton.FlatAppearance.BorderSize = 0;
+            this.plusButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.plusButton.Location = new System.Drawing.Point(4, 4);
+            this.plusButton.Margin = new System.Windows.Forms.Padding(0);
+            this.plusButton.Name = "plusButton";
+            this.plusButton.Size = new System.Drawing.Size(20, 20);
+            this.plusButton.TabIndex = 0;
+            this.plusButton.TabStop = false;
+            this.plusButton.Text = "+";
+            this.plusButton.UseCompatibleTextRendering = true;
+            this.plusButton.UseVisualStyleBackColor = false;
+            this.plusButton.Click += new System.EventHandler(this.plusButton_Click);
+            // 
+            // closeButton
+            // 
+            this.closeButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.closeButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.closeButton.FlatAppearance.BorderSize = 0;
+            this.closeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.closeButton.Location = new System.Drawing.Point(159, 4);
+            this.closeButton.Margin = new System.Windows.Forms.Padding(0);
+            this.closeButton.Name = "closeButton";
+            this.closeButton.Size = new System.Drawing.Size(20, 20);
+            this.closeButton.TabIndex = 0;
+            this.closeButton.TabStop = false;
+            this.closeButton.Text = "×";
+            this.closeButton.UseCompatibleTextRendering = true;
+            this.closeButton.UseVisualStyleBackColor = false;
+            this.closeButton.Click += new System.EventHandler(this.closeButton_Click);
+            // 
+            // superRichTextBox1
+            // 
+            this.superRichTextBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.superRichTextBox1.BackColor = this.BackColor;
+            this.superRichTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.superRichTextBox1.DetectUrls = false;
+            this.superRichTextBox1.Location = new System.Drawing.Point(4, 28);
+            this.superRichTextBox1.Name = "superRichTextBox1";
+            this.superRichTextBox1.Size = new System.Drawing.Size(174, 150);
+            this.superRichTextBox1.TabIndex = 0;
+            this.superRichTextBox1.TabStop = false;
+            this.superRichTextBox1.Text = "";
+            this.superRichTextBox1.LinkClicked += new System.Windows.Forms.LinkClickedEventHandler(this.superRichTextBox1_LinkClicked);
+            // 
+            // titleTextBox
+            // 
+            this.titleTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.titleTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.titleTextBox.Font = new System.Drawing.Font("メイリオ", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.titleTextBox.Location = new System.Drawing.Point(24, 4);
+            this.titleTextBox.Margin = new System.Windows.Forms.Padding(0);
+            this.titleTextBox.Name = "titleTextBox";
+            this.titleTextBox.Size = new System.Drawing.Size(136, 23);
+            this.titleTextBox.TabIndex = 0;
+            this.titleTextBox.TabStop = false;
+            this.titleTextBox.Visible = false;
+            this.titleTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
+            this.titleTextBox.Leave += new System.EventHandler(this.textBox1_Leave);
             // 
             // NoteForm
             // 
