@@ -54,11 +54,14 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.titleLabel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.titleLabel.ContextMenuStrip = this.contextMenuStrip1;
+            this.titleLabel.Font = new System.Drawing.Font("メイリオ", 10.5F);
+            this.titleLabel.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.titleLabel.Location = new System.Drawing.Point(23, 4);
             this.titleLabel.Margin = new System.Windows.Forms.Padding(0, 3, 0, 0);
             this.titleLabel.Name = "titleLabel";
             this.titleLabel.Size = new System.Drawing.Size(137, 20);
             this.titleLabel.TabIndex = 0;
+            this.titleLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.titleLabel.DoubleClick += new System.EventHandler(this.titleLabel_DoubleClick);
             this.titleLabel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.titleLabel_MouseDown);
             this.titleLabel.MouseMove += new System.Windows.Forms.MouseEventHandler(this.titleLabel_MouseMove);
@@ -137,6 +140,7 @@
             this.plusButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.plusButton.FlatAppearance.BorderSize = 0;
             this.plusButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.plusButton.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.plusButton.Location = new System.Drawing.Point(4, 4);
             this.plusButton.Margin = new System.Windows.Forms.Padding(0);
             this.plusButton.Name = "plusButton";
@@ -154,6 +158,7 @@
             this.closeButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.closeButton.FlatAppearance.BorderSize = 0;
             this.closeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.closeButton.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.closeButton.Location = new System.Drawing.Point(159, 4);
             this.closeButton.Margin = new System.Windows.Forms.Padding(0);
             this.closeButton.Name = "closeButton";
@@ -187,11 +192,11 @@
             this.titleTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.titleTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.titleTextBox.Font = new System.Drawing.Font("メイリオ", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.titleTextBox.Font = new System.Drawing.Font("メイリオ", 11F);
             this.titleTextBox.Location = new System.Drawing.Point(24, 4);
             this.titleTextBox.Margin = new System.Windows.Forms.Padding(0);
             this.titleTextBox.Name = "titleTextBox";
-            this.titleTextBox.Size = new System.Drawing.Size(136, 23);
+            this.titleTextBox.Size = new System.Drawing.Size(136, 22);
             this.titleTextBox.TabIndex = 0;
             this.titleTextBox.TabStop = false;
             this.titleTextBox.Visible = false;
@@ -202,13 +207,11 @@
             // 
             this.printDialog1.Document = this.printDocument1;
             this.printDialog1.UseEXDialog = true;
-            //
+            // 
             // printDocument1
-            //
-            printDocument1.BeginPrint +=
-                new System.Drawing.Printing.PrintEventHandler(printDocument1_BeginPrint);
-            printDocument1.PrintPage +=
-                new System.Drawing.Printing.PrintPageEventHandler(printDocument1_PrintPage);
+            // 
+            this.printDocument1.BeginPrint += new System.Drawing.Printing.PrintEventHandler(this.printDocument1_BeginPrint);
+            this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument1_PrintPage);
             // 
             // NoteForm
             // 
