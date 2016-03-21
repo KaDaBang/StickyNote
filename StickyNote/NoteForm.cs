@@ -16,6 +16,7 @@ namespace StickyNote
     {
         //フィールド変数の定義
         Point mousepoint;
+        int checkPrint;
         //色
         private Color yellow = Color.FromArgb(255, 255, 192);
         private Color green = Color.FromArgb(192, 255, 192);
@@ -23,6 +24,10 @@ namespace StickyNote
         private Color pink = Color.FromArgb(255, 192, 255);
         private Color orange = Color.FromArgb(255, 192, 100);
         private Color white = Color.FromArgb(255, 255, 255);
+
+        //印刷用SuperRichTextBox作成
+        SRichTextBoxLibrary.SuperRichTextBox printSrtb =
+            new SRichTextBoxLibrary.SuperRichTextBox();
 
         public bool isHyperLink()
         {
@@ -143,6 +148,14 @@ namespace StickyNote
         private void superRichTextBox1_LinkClicked(object sender, LinkClickedEventArgs e)
         {   //リンククリック時
             System.Diagnostics.Process.Start(e.LinkText);
+        }
+
+        private void superRichTextBox1_KeyDown(object sender, KeyEventArgs e)
+        {   //ショートカット
+            if (e.KeyCode == Keys.P && e.Control)
+            {   //Print [ctrl+P]
+                PrintNote();
+            }
         }
 
 
@@ -288,5 +301,39 @@ namespace StickyNote
             }
         }
 
+        /********************************************************
+        ** 印刷
+        */
+
+        public void PrintNote()
+        {   //ノートを印刷する
+            if (printDialog1.ShowDialog() == DialogResult.OK)
+            {
+                printSrtb.Text = titleLabel.Text + "\n\n";
+                printSrtb.SelectAll();
+                printSrtb.SelectionFont =
+                    new Font(printSrtb.SelectionFont.FontFamily,20, printSrtb.SelectionFont.Style);
+                printSrtb.SelectionStart = printSrtb.TextLength;
+                printSrtb.SelectedRtf = superRichTextBox1.Rtf;
+                printDocument1.Print();
+            }
+        }
+
+        private void printDocument1_BeginPrint(object sender, System.Drawing.Printing.PrintEventArgs e)
+        {
+            checkPrint = 0;
+        }
+
+        private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        {
+            // Print the content of RichTextBox. Store the last character printed.
+            checkPrint = printSrtb.Print(checkPrint, printSrtb.TextLength, e);
+
+            // Check for more pages
+            if (checkPrint < printSrtb.TextLength)
+                e.HasMorePages = true;
+            else
+                e.HasMorePages = false;
+        }
     }
 }

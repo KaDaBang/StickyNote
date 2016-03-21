@@ -43,6 +43,8 @@
             this.closeButton = new System.Windows.Forms.Button();
             this.superRichTextBox1 = new SRichTextBoxLibrary.SuperRichTextBox();
             this.titleTextBox = new System.Windows.Forms.TextBox();
+            this.printDialog1 = new System.Windows.Forms.PrintDialog();
+            this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -178,6 +180,7 @@
             this.superRichTextBox1.TabStop = false;
             this.superRichTextBox1.Text = "";
             this.superRichTextBox1.LinkClicked += new System.Windows.Forms.LinkClickedEventHandler(this.superRichTextBox1_LinkClicked);
+            this.superRichTextBox1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.superRichTextBox1_KeyDown);
             // 
             // titleTextBox
             // 
@@ -194,6 +197,18 @@
             this.titleTextBox.Visible = false;
             this.titleTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
             this.titleTextBox.Leave += new System.EventHandler(this.textBox1_Leave);
+            // 
+            // printDialog1
+            // 
+            this.printDialog1.Document = this.printDocument1;
+            this.printDialog1.UseEXDialog = true;
+            //
+            // printDocument1
+            //
+            printDocument1.BeginPrint +=
+                new System.Drawing.Printing.PrintEventHandler(printDocument1_BeginPrint);
+            printDocument1.PrintPage +=
+                new System.Drawing.Printing.PrintPageEventHandler(printDocument1_PrintPage);
             // 
             // NoteForm
             // 
@@ -239,6 +254,8 @@
         private System.Windows.Forms.ToolStripMenuItem whiteToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem hyperlinkToolStripMenuItem;
+        private System.Windows.Forms.PrintDialog printDialog1;
+        private System.Drawing.Printing.PrintDocument printDocument1;
     }
 }
 
