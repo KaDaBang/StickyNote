@@ -54,6 +54,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.titleLabel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.titleLabel.ContextMenuStrip = this.contextMenuStrip1;
+            this.titleLabel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.titleLabel.Font = new System.Drawing.Font("メイリオ", 10.5F);
             this.titleLabel.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.titleLabel.Location = new System.Drawing.Point(23, 4);
@@ -192,11 +193,11 @@
             this.titleTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.titleTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.titleTextBox.Font = new System.Drawing.Font("メイリオ", 11F);
+            this.titleTextBox.Font = new System.Drawing.Font("メイリオ", 10.5F);
             this.titleTextBox.Location = new System.Drawing.Point(24, 4);
             this.titleTextBox.Margin = new System.Windows.Forms.Padding(0);
             this.titleTextBox.Name = "titleTextBox";
-            this.titleTextBox.Size = new System.Drawing.Size(136, 22);
+            this.titleTextBox.Size = new System.Drawing.Size(136, 21);
             this.titleTextBox.TabIndex = 0;
             this.titleTextBox.TabStop = false;
             this.titleTextBox.Visible = false;
