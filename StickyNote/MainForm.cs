@@ -84,24 +84,31 @@ namespace StickyNote
             XmlSerializer serializer = new XmlSerializer(typeof(Settings));
             foreach (string file in files)
             {
-                StreamReader sr = new StreamReader(file, new UTF8Encoding(false));
-                Settings settings = (Settings)serializer.Deserialize(sr);
-                sr.Close();
-                //ノートを作ってプロパティをセット
-                NoteForm nf = new NoteForm();
-                nf.Size = settings.Size;
-                nf.Location = settings.Point;
-                Color color = Color.FromArgb(settings.Color);
-                nf.BackColor = color;
-                nf.setTitle(settings.Title);
-                nf.setHyperLink(settings.HyperLink);
-                nf.loadRtf(settings.RtfName);
+                try
+                {
+                    StreamReader sr = new StreamReader(file, new UTF8Encoding(false));
+                    Settings settings = (Settings)serializer.Deserialize(sr);
+                    sr.Close();
+                    //ノートを作ってプロパティをセット
+                    NoteForm nf = new NoteForm();
+                    nf.Size = settings.Size;
+                    nf.Location = settings.Point;
+                    Color color = Color.FromArgb(settings.Color);
+                    nf.BackColor = color;
+                    nf.setTitle(settings.Title);
+                    nf.setHyperLink(settings.HyperLink);
+                    nf.loadRtf(settings.RtfName);
 
-                nf.StartPosition = FormStartPosition.Manual;
-                nf.Owner = this;
-                nf.Show();
+                    nf.StartPosition = FormStartPosition.Manual;
+                    nf.Owner = this;
+                    nf.Show();
 
-                settings = null;
+                    settings = null;
+                }
+                catch
+                {
+                    MessageBox.Show("ノートの読み込みに失敗しました。");
+                }
             }
             if (Application.OpenForms.Count == 1)
             {
