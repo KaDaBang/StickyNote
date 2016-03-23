@@ -15,6 +15,7 @@ namespace StickyNote
         string rtfDir = @".\rtf\note";     //rtfを保存するフォルダのパス
         string rtfName;     //rtfファイルの名前
         bool noteVisible = true;    //ノート表示/非表示の状態を表す
+        bool isClosing = false;
 
         public MainForm()
         {
@@ -118,10 +119,26 @@ namespace StickyNote
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {   //フォームを閉じる時
-            //ノートを保存
-            saveNotes();
-            //notifiIconを破棄
-            notifyIcon1.Dispose();
+            if (isClosing == false)
+            {
+                DialogResult result = MessageBox.Show("ノートを保存して終了します。",
+                    "StickyNote",
+                    MessageBoxButtons.OKCancel,
+                    MessageBoxIcon.None,
+                    MessageBoxDefaultButton.Button1);
+
+                if (result == DialogResult.OK)
+                {
+                    //ノートを保存
+                    saveNotes();
+                    //notifiIconを破棄
+                    notifyIcon1.Dispose();
+                }
+                else
+                {
+                    e.Cancel = true;
+                }
+            }
 
         }
 
@@ -166,12 +183,14 @@ namespace StickyNote
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {   //保存して終了
+            isClosing = true;
             saveFlag = true;
             Close();
         }
 
         private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
         {   //削除して終了
+            isClosing = true;
             DialogResult result = MessageBox.Show("全てのノートを削除します。",
                 "StickyNote",
                 MessageBoxButtons.OKCancel,
