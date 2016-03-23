@@ -312,7 +312,7 @@ namespace StickyNote
                 printSrtb.Text = titleLabel.Text + "\n\n";
                 printSrtb.SelectAll();
                 printSrtb.SelectionFont =
-                    new Font(printSrtb.SelectionFont.FontFamily,20, printSrtb.SelectionFont.Style);
+                    new Font(printSrtb.SelectionFont.FontFamily,15, printSrtb.SelectionFont.Style);
                 printSrtb.SelectionStart = printSrtb.TextLength;
                 printSrtb.SelectedRtf = superRichTextBox1.Rtf;
                 printDocument1.Print();

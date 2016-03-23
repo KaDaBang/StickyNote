@@ -62,7 +62,7 @@
             this.titleLabel.Name = "titleLabel";
             this.titleLabel.Size = new System.Drawing.Size(137, 20);
             this.titleLabel.TabIndex = 0;
-            this.titleLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.titleLabel.UseCompatibleTextRendering = true;
             this.titleLabel.DoubleClick += new System.EventHandler(this.titleLabel_DoubleClick);
             this.titleLabel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.titleLabel_MouseDown);
             this.titleLabel.MouseMove += new System.Windows.Forms.MouseEventHandler(this.titleLabel_MouseMove);
@@ -230,7 +230,7 @@
             this.Font = new System.Drawing.Font("メイリオ", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.MinimumSize = new System.Drawing.Size(150, 150);
+            this.MinimumSize = new System.Drawing.Size(100, 100);
             this.Name = "NoteForm";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
