@@ -108,7 +108,6 @@
             this.Opacity = 0D;
             this.Text = "StickyNote";
             this.WindowState = System.Windows.Forms.FormWindowState.Minimized;
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
