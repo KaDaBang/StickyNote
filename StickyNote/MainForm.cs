@@ -27,6 +27,13 @@ namespace StickyNote
             loadNotes();
         }
 
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {   //終了時
+            //ノート保存
+            saveNotes();
+        }
+
+
 
         public void newNote()
         {   //ノート新規作成
@@ -201,5 +208,6 @@ namespace StickyNote
                 noteVisibleToolStripMenuItem.Checked = true;
             }
         }
+
     }
 }
