@@ -157,12 +157,12 @@ namespace StickyNote
         //ショートカットの定義
         private void superRichTextBox1_KeyDown(object sender, KeyEventArgs e)
         {   //ショートカット
-            if (e.KeyCode == Keys.P && e.Control)
+            if (e.KeyCode == Keys.P && e.Control && !e.Shift)
             {   //Print [ctrl+P]
                 PrintNote();
             }
 
-            if (e.KeyCode == Keys.N && e.Control)
+            if (e.KeyCode == Keys.N && e.Control && !e.Shift)
             {   //新しいノート
                 ((MainForm)Owner).newNote();
             }
@@ -172,7 +172,7 @@ namespace StickyNote
                 titleEdit();
             }
 
-            if (e.KeyCode == Keys.H && e.Control)
+            if (e.KeyCode == Keys.H && e.Control && !e.Shift)
             {   //ハイパーリンクのON/OFF
                 toggleHyperLink();
             }
