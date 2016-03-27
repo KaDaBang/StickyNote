@@ -183,7 +183,6 @@
             this.superRichTextBox1.Name = "superRichTextBox1";
             this.superRichTextBox1.Size = new System.Drawing.Size(174, 150);
             this.superRichTextBox1.TabIndex = 0;
-            this.superRichTextBox1.TabStop = false;
             this.superRichTextBox1.Text = "";
             this.superRichTextBox1.LinkClicked += new System.Windows.Forms.LinkClickedEventHandler(this.superRichTextBox1_LinkClicked);
             this.superRichTextBox1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.superRichTextBox1_KeyDown);

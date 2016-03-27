@@ -77,9 +77,7 @@ namespace StickyNote
 
         private void titleLabel_DoubleClick(object sender, EventArgs e)
         {   //タイトルラベルをダブルクリックでタイトル編集
-            titleTextBox.Text = titleLabel.Text;
-            titleTextBox.Visible = true;
-            titleTextBox.Focus();
+            titleEdit();
         }
 
 
@@ -99,6 +97,13 @@ namespace StickyNote
         {
             titleLabel.Text = titleTextBox.Text;
             titleTextBox.Visible = false;
+        }
+
+        private void titleEdit()
+        {
+            titleTextBox.Text = titleLabel.Text;
+            titleTextBox.Visible = true;
+            titleTextBox.Focus();
         }
 
 
@@ -144,11 +149,23 @@ namespace StickyNote
             System.Diagnostics.Process.Start(e.LinkText);
         }
 
+
+        //ショートカットの定義
         private void superRichTextBox1_KeyDown(object sender, KeyEventArgs e)
         {   //ショートカット
             if (e.KeyCode == Keys.P && e.Control)
             {   //Print [ctrl+P]
                 PrintNote();
+            }
+
+            if (e.KeyCode == Keys.N && e.Control)
+            {   //新しいノート
+                ((MainForm)Owner).newNote();
+            }
+
+            if (e.KeyCode == Keys.T && e.Control && e.Shift)
+            {   //タイトル編集
+                titleEdit();
             }
         }
 
