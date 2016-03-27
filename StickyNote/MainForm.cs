@@ -68,7 +68,7 @@ namespace StickyNote
                 settings.Point = nf.Location;
                 settings.Color = nf.BackColor.ToArgb();
                 settings.Title = nf.getTitle();
-                settings.HyperLink = nf.isHyperLink();
+                settings.HyperLink = nf.isHyperLink;
 
                 rtfName = rtfDir + i + ".rtf";
                 settings.RtfName = rtfName;
@@ -103,7 +103,7 @@ namespace StickyNote
                     Color color = Color.FromArgb(settings.Color);
                     nf.BackColor = color;
                     nf.setTitle(settings.Title);
-                    nf.setHyperLink(settings.HyperLink);
+                    nf.isHyperLink = settings.HyperLink;
                     nf.loadRtf(settings.RtfName);
 
                     nf.StartPosition = FormStartPosition.Manual;

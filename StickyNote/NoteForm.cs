@@ -18,19 +18,16 @@ namespace StickyNote
         private Color pink = Color.FromArgb(255, 192, 255);
         private Color orange = Color.FromArgb(255, 192, 100);
         private Color white = Color.FromArgb(255, 255, 255);
+        
+        public bool isHyperLink
+        {   //ハイパーリンクのON/OFF
+            get { return superRichTextBox1.DetectUrls; }
+            set { superRichTextBox1.DetectUrls = value; }
+        }
 
         //印刷用SuperRichTextBox作成
         SRichTextBoxLibrary.SuperRichTextBox printSrtb =
             new SRichTextBoxLibrary.SuperRichTextBox();
-
-        public bool isHyperLink()
-        {
-            return superRichTextBox1.DetectUrls;
-        }
-        public void setHyperLink(bool hyper)
-        {
-            superRichTextBox1.DetectUrls = hyper;
-        }
 
         public NoteForm()
         {
@@ -135,7 +132,7 @@ namespace StickyNote
         }
 
         public void saveRtf(string filename)
-        {
+        {   
             superRichTextBox1.SaveFile(filename);
         }
 
@@ -146,7 +143,14 @@ namespace StickyNote
 
         private void superRichTextBox1_LinkClicked(object sender, LinkClickedEventArgs e)
         {   //リンククリック時
-            System.Diagnostics.Process.Start(e.LinkText);
+            try
+            {
+                System.Diagnostics.Process.Start(e.LinkText);
+            }
+            catch
+            {   //リンクオープンに失敗した時
+                MessageBox.Show("リンク先を開くことができませんでした。");
+            }
         }
 
 
@@ -166,6 +170,11 @@ namespace StickyNote
             if (e.KeyCode == Keys.T && e.Control && e.Shift)
             {   //タイトル編集
                 titleEdit();
+            }
+
+            if (e.KeyCode == Keys.H && e.Control)
+            {   //ハイパーリンクのON/OFF
+                toggleHyperLink();
             }
         }
 
@@ -289,26 +298,31 @@ namespace StickyNote
         }
 
         private void hyperlinkToolStripMenuItem_Click(object sender, EventArgs e)
-        {   //ハイパーリンク
-            if (isHyperLink() == true)
-            {   //ハイパーリンクONならOFF
-                setHyperLink(false);
-            }
-            else
-            {   //ハイパーリンクOFFならON
-                setHyperLink(true);
-            }
+        {   //ハイパーリンクのON/OFF
+            toggleHyperLink();
         }
 
         private void contextMenuStrip1_Opening(object sender, CancelEventArgs e)
         {   //メニューストリップ表示時
-            if (isHyperLink() == true)
+            if (isHyperLink == true)
             {   //ハイパーリンクONならチェック
                 hyperlinkToolStripMenuItem.Checked = true;
             }
             else
             {   //ハイパーリンクOFFならチェック外す
                 hyperlinkToolStripMenuItem.Checked = false;
+            }
+        }
+
+        private void toggleHyperLink()
+        {   //ハイパーリンクのON/OFF
+            if (isHyperLink == true)
+            {   //ハイパーリンクONならOFF
+                isHyperLink = false;
+            }
+            else
+            {   //ハイパーリンクOFFならON
+                isHyperLink = true;
             }
         }
 

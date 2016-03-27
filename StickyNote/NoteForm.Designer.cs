@@ -41,10 +41,10 @@
             this.hyperlinkToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.plusButton = new System.Windows.Forms.Button();
             this.closeButton = new System.Windows.Forms.Button();
-            this.superRichTextBox1 = new SRichTextBoxLibrary.SuperRichTextBox();
             this.titleTextBox = new System.Windows.Forms.TextBox();
             this.printDialog1 = new System.Windows.Forms.PrintDialog();
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
+            this.superRichTextBox1 = new SRichTextBoxLibrary.SuperRichTextBox();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -171,22 +171,6 @@
             this.closeButton.UseVisualStyleBackColor = false;
             this.closeButton.Click += new System.EventHandler(this.closeButton_Click);
             // 
-            // superRichTextBox1
-            // 
-            this.superRichTextBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.superRichTextBox1.BackColor = this.BackColor;
-            this.superRichTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.superRichTextBox1.DetectUrls = false;
-            this.superRichTextBox1.Location = new System.Drawing.Point(4, 28);
-            this.superRichTextBox1.Name = "superRichTextBox1";
-            this.superRichTextBox1.Size = new System.Drawing.Size(174, 150);
-            this.superRichTextBox1.TabIndex = 0;
-            this.superRichTextBox1.Text = "";
-            this.superRichTextBox1.LinkClicked += new System.Windows.Forms.LinkClickedEventHandler(this.superRichTextBox1_LinkClicked);
-            this.superRichTextBox1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.superRichTextBox1_KeyDown);
-            // 
             // titleTextBox
             // 
             this.titleTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -205,6 +189,9 @@
             // 
             // printDialog1
             // 
+            this.printDialog1.AllowPrintToFile = false;
+            this.printDialog1.AllowSelection = true;
+            this.printDialog1.AllowSomePages = true;
             this.printDialog1.Document = this.printDocument1;
             this.printDialog1.UseEXDialog = true;
             // 
@@ -212,6 +199,22 @@
             // 
             this.printDocument1.BeginPrint += new System.Drawing.Printing.PrintEventHandler(this.printDocument1_BeginPrint);
             this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument1_PrintPage);
+            // 
+            // superRichTextBox1
+            // 
+            this.superRichTextBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.superRichTextBox1.BackColor = this.BackColor;
+            this.superRichTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.superRichTextBox1.DetectUrls = false;
+            this.superRichTextBox1.Location = new System.Drawing.Point(4, 28);
+            this.superRichTextBox1.Name = "superRichTextBox1";
+            this.superRichTextBox1.Size = new System.Drawing.Size(174, 150);
+            this.superRichTextBox1.TabIndex = 0;
+            this.superRichTextBox1.Text = "";
+            this.superRichTextBox1.LinkClicked += new System.Windows.Forms.LinkClickedEventHandler(this.superRichTextBox1_LinkClicked);
+            this.superRichTextBox1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.superRichTextBox1_KeyDown);
             // 
             // NoteForm
             // 
