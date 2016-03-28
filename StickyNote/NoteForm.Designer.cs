@@ -1,4 +1,6 @@
-﻿namespace StickyNote
+﻿using System.Windows.Forms;
+
+namespace StickyNote
 {
     partial class NoteForm
     {
@@ -40,7 +42,7 @@
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.hyperlinkToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.plusButton = new System.Windows.Forms.Button();
-            this.closeButton = new System.Windows.Forms.Button();
+            this.closeButton = new DoubleClickButton();
             this.titleTextBox = new System.Windows.Forms.TextBox();
             this.printDialog1 = new System.Windows.Forms.PrintDialog();
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
@@ -169,7 +171,7 @@
             this.closeButton.Text = "×";
             this.closeButton.UseCompatibleTextRendering = true;
             this.closeButton.UseVisualStyleBackColor = false;
-            this.closeButton.Click += new System.EventHandler(this.closeButton_Click);
+            this.closeButton.DoubleClick += new System.EventHandler(this.closeButton_DoubleClick);
             // 
             // titleTextBox
             // 
@@ -248,7 +250,7 @@
 
         private System.Windows.Forms.Label titleLabel;
         private System.Windows.Forms.Button plusButton;
-        private System.Windows.Forms.Button closeButton;
+        private DoubleClickButton closeButton;
         private SRichTextBoxLibrary.SuperRichTextBox superRichTextBox1;
         private System.Windows.Forms.TextBox titleTextBox;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
@@ -263,5 +265,15 @@
         private System.Windows.Forms.PrintDialog printDialog1;
         private System.Drawing.Printing.PrintDocument printDocument1;
     }
+    public class DoubleClickButton : Button
+    {
+        public DoubleClickButton() : base()
+        {
+            // Set the style so a double click event occurs.
+            SetStyle(ControlStyles.StandardClick |
+                ControlStyles.StandardDoubleClick, true);
+        }
+    }
+
 }
 

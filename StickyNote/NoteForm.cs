@@ -107,7 +107,7 @@ namespace StickyNote
         /********************************************************
         ** closeButton
         */
-        private void closeButton_Click(object sender, EventArgs e)
+        private void closeButton_DoubleClick(object sender, EventArgs e)
         {   //closeButtonでノートを閉じる
             Close();
         }
