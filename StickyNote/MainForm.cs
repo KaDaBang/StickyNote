@@ -30,7 +30,15 @@ namespace StickyNote
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {   //終了時
             //ノート保存
-            saveNotes();
+            try
+            {
+                saveNotes();
+            }
+            catch
+            {   //ノート保存に失敗したら、閉じるのをキャンセルする。
+                MessageBox.Show("ノートの保存に失敗しました。");
+                e.Cancel = true;
+            }
         }
 
 
