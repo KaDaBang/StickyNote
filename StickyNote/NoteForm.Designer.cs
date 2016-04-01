@@ -42,11 +42,11 @@ namespace StickyNote
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.hyperlinkToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.plusButton = new System.Windows.Forms.Button();
-            this.closeButton = new DoubleClickButton();
             this.titleTextBox = new System.Windows.Forms.TextBox();
             this.printDialog1 = new System.Windows.Forms.PrintDialog();
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.superRichTextBox1 = new SRichTextBoxLibrary.SuperRichTextBox();
+            this.closeButton = new StickyNote.DoubleClickButton();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -155,24 +155,6 @@ namespace StickyNote
             this.plusButton.UseVisualStyleBackColor = false;
             this.plusButton.Click += new System.EventHandler(this.plusButton_Click);
             // 
-            // closeButton
-            // 
-            this.closeButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.closeButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.closeButton.FlatAppearance.BorderSize = 0;
-            this.closeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.closeButton.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.closeButton.Location = new System.Drawing.Point(159, 4);
-            this.closeButton.Margin = new System.Windows.Forms.Padding(0);
-            this.closeButton.Name = "closeButton";
-            this.closeButton.Size = new System.Drawing.Size(20, 20);
-            this.closeButton.TabIndex = 0;
-            this.closeButton.TabStop = false;
-            this.closeButton.Text = "×";
-            this.closeButton.UseCompatibleTextRendering = true;
-            this.closeButton.UseVisualStyleBackColor = false;
-            this.closeButton.DoubleClick += new System.EventHandler(this.closeButton_DoubleClick);
-            // 
             // titleTextBox
             // 
             this.titleTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -214,9 +196,28 @@ namespace StickyNote
             this.superRichTextBox1.Name = "superRichTextBox1";
             this.superRichTextBox1.Size = new System.Drawing.Size(174, 150);
             this.superRichTextBox1.TabIndex = 0;
+            this.superRichTextBox1.TabStop = false;
             this.superRichTextBox1.Text = "";
             this.superRichTextBox1.LinkClicked += new System.Windows.Forms.LinkClickedEventHandler(this.superRichTextBox1_LinkClicked);
             this.superRichTextBox1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.superRichTextBox1_KeyDown);
+            // 
+            // closeButton
+            // 
+            this.closeButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.closeButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.closeButton.FlatAppearance.BorderSize = 0;
+            this.closeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.closeButton.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.closeButton.Location = new System.Drawing.Point(159, 4);
+            this.closeButton.Margin = new System.Windows.Forms.Padding(0);
+            this.closeButton.Name = "closeButton";
+            this.closeButton.Size = new System.Drawing.Size(20, 20);
+            this.closeButton.TabIndex = 0;
+            this.closeButton.TabStop = false;
+            this.closeButton.Text = "×";
+            this.closeButton.UseCompatibleTextRendering = true;
+            this.closeButton.UseVisualStyleBackColor = false;
+            this.closeButton.DoubleClick += new System.EventHandler(this.closeButton_DoubleClick);
             // 
             // NoteForm
             // 
@@ -226,11 +227,11 @@ namespace StickyNote
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(183, 183);
             this.ControlBox = false;
-            this.Controls.Add(this.superRichTextBox1);
             this.Controls.Add(this.closeButton);
             this.Controls.Add(this.plusButton);
             this.Controls.Add(this.titleTextBox);
             this.Controls.Add(this.titleLabel);
+            this.Controls.Add(this.superRichTextBox1);
             this.Font = new System.Drawing.Font("メイリオ", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
