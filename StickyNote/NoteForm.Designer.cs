@@ -186,6 +186,7 @@ namespace StickyNote
             // 
             // superRichTextBox1
             // 
+            this.superRichTextBox1.AcceptsTab = true;
             this.superRichTextBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -196,7 +197,6 @@ namespace StickyNote
             this.superRichTextBox1.Name = "superRichTextBox1";
             this.superRichTextBox1.Size = new System.Drawing.Size(174, 150);
             this.superRichTextBox1.TabIndex = 0;
-            this.superRichTextBox1.TabStop = false;
             this.superRichTextBox1.Text = "";
             this.superRichTextBox1.LinkClicked += new System.Windows.Forms.LinkClickedEventHandler(this.superRichTextBox1_LinkClicked);
             this.superRichTextBox1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.superRichTextBox1_KeyDown);
@@ -237,7 +237,6 @@ namespace StickyNote
             this.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.MinimumSize = new System.Drawing.Size(100, 100);
             this.Name = "NoteForm";
-            this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.Load += new System.EventHandler(this.NoteForm_Load);
             this.BackColorChanged += new System.EventHandler(this.NoteForm_BackColorChanged);

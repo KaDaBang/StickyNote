@@ -154,7 +154,9 @@ namespace StickyNote
         }
 
 
-        //ショートカットの定義
+        /********************************************************
+        ** ショートカットの定義
+        */
         private void superRichTextBox1_KeyDown(object sender, KeyEventArgs e)
         {   //ショートカット
             if (e.KeyCode == Keys.P && e.Control && !e.Shift)
@@ -176,6 +178,7 @@ namespace StickyNote
             {   //ハイパーリンクのON/OFF
                 toggleHyperLink();
             }
+
         }
 
 
