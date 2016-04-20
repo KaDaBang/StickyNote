@@ -14,7 +14,7 @@ namespace StickyNote
         bool saveFlag = true;   //ノートを保存するかどうか
         string rtfDir = @".\rtf\note";     //rtfを保存するフォルダのパス
         string rtfName;     //rtfファイルの名前
-        bool noteVisible = true;    //ノート表示/非表示の状態を表す
+        //bool noteVisible = true;    //ノート表示/非表示の状態を表す
 
         public MainForm()
         {
@@ -141,81 +141,19 @@ namespace StickyNote
             }
         }
 
-        private void visibleToggle()
-        {   //ノート表示/非表示の切り替え
-            if (noteVisible == true)
-            {   //ノート表示中なら非表示に
-                for (int i = 1; i < Application.OpenForms.Count; i++)
-                {   //開いているNoteFormにループ処理
-                    Application.OpenForms[i].Visible = false;
-                }
-                noteVisible = false;
-            }
-            else
-            {   //ノート非表示中なら表示する
-                for (int i = 1; i < Application.OpenForms.Count; i++)
-                {   //開いているNoteFormにループ処理
-                    Application.OpenForms[i].Visible = true;
-                }
-                noteVisible = true;
-            }
-
+        public void noteClose(Form f)
+        {   //ノートを閉じる
+            f.Close();
+            noteCheck();
         }
 
-        /********************************************************
-        ** contextMenuStrip1
-        */
-        private void newNoteToolStripMenuItem_Click(object sender, EventArgs e)
-        {   //新規作成Item
-            newNote();
-        }
-
-        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
-        {   //保存して終了
-            saveFlag = true;
-            Close();
-        }
-
-        private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
-        {   //削除して終了
-            DialogResult result = MessageBox.Show("全てのノートを削除します。",
-                "StickyNote",
-                MessageBoxButtons.OKCancel,
-                MessageBoxIcon.Exclamation,
-                MessageBoxDefaultButton.Button2);
-
-            if (result == DialogResult.OK)
+        public void noteCheck()
+        {   //ノートが一つもなければアプリ終了
+            if (Application.OpenForms.Count == 1)
             {
                 saveFlag = false;
                 Close();
             }
-            else
-            {
-                return;
-            }
         }
-
-        private void noteVisibleToolStripMenuItem_Click(object sender, EventArgs e)
-        {   //ノート非表示
-            visibleToggle();
-        }
-
-        private void notifyIcon1_DoubleClick(object sender, EventArgs e)
-        {   //アイコンダブルクリック時
-            visibleToggle();
-        }
-
-        private void contextMenuStrip1_Opening(object sender, System.ComponentModel.CancelEventArgs e)
-        {   //メニュー展開時
-            if (noteVisible == true)
-            {   //ノート表示中なら、非表示メニューのチェック外す
-                noteVisibleToolStripMenuItem.Checked = false;
-            }
-            else
-            {   //ノート非表示中なら、チェック入れる
-                noteVisibleToolStripMenuItem.Checked = true;
-            }
-        }
-
     }
 }

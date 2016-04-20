@@ -37,9 +37,8 @@ namespace StickyNote
 
         private void NoteForm_Load(object sender, EventArgs e)
         {
-            setWindowHandle();
+            // setWindowHandle();
         }
-
 
         /********************************************************
         ** titleLabel
@@ -109,7 +108,7 @@ namespace StickyNote
         */
         private void closeButton_DoubleClick(object sender, EventArgs e)
         {   //closeButtonでノートを閉じる
-            Close();
+            ((MainForm)Owner).noteClose(this);
         }
 
 
@@ -243,28 +242,6 @@ namespace StickyNote
             }
         }
 
-        //FindWindowの宣言
-        [DllImport("user32.dll",
-                CharSet = CharSet.Auto)]
-        static extern IntPtr FindWindow(string lpClassName, string lpWindowName);
-
-        //SetParentの宣言
-        [DllImport("user32.dll",
-            CharSet = CharSet.Auto)]
-        static extern IntPtr SetParent(IntPtr hWndChild, IntPtr hWndNewParent);
-
-        [DllImport("User32.Dll")]
-        static extern IntPtr GetDesktopWindow();
-
-        private void setWindowHandle()
-        {   //ウィンドウハンドルのセット
-            IntPtr programManagerHandle = FindWindow(null, "Program Manager");
-            if (! programManagerHandle.Equals(IntPtr.Zero))
-            {
-                SetParent(Handle, programManagerHandle);
-            }
-        }
-
         /********************************************************
         ** contextMenuStrip1
         */
@@ -362,5 +339,6 @@ namespace StickyNote
             else
                 e.HasMorePages = false;
         }
+
     }
 }
