@@ -240,7 +240,6 @@ namespace StickyNote
                     m.Result = (IntPtr)WindowsConst.HTBOTTOM;
                     return;
                 }
-
             }
         }
 
