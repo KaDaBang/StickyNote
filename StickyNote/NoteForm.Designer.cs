@@ -194,6 +194,7 @@ namespace StickyNote
             this.superRichTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.superRichTextBox1.DetectUrls = false;
             this.superRichTextBox1.EnableAutoDragDrop = true;
+            this.superRichTextBox1.Font = new System.Drawing.Font("メイリオ", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.superRichTextBox1.Location = new System.Drawing.Point(4, 28);
             this.superRichTextBox1.Name = "superRichTextBox1";
             this.superRichTextBox1.Size = new System.Drawing.Size(174, 150);
