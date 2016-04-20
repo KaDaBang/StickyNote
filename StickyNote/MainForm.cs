@@ -53,6 +53,9 @@ namespace StickyNote
         public void saveNotes()
         {   //ノートを保存
 
+            //フォルダ作成
+            makeDir();
+
             //既にあるデータをクリア
             fileDel(@".\Notes");
             fileDel(@".\rtf");
@@ -94,7 +97,12 @@ namespace StickyNote
         }
 
         public void loadNotes()
-        {   //ノートを読込
+        {   //ノートの読み込み
+
+            //フォルダ作成
+            makeDir();
+            
+            //ノートを読込
             IEnumerable<string> files = Directory.EnumerateFiles(@".\Notes");
             XmlSerializer serializer = new XmlSerializer(typeof(Settings));
             foreach (string file in files)
@@ -128,6 +136,18 @@ namespace StickyNote
             if (Application.OpenForms.Count == 1)
             {
                 newNote();
+            }
+        }
+
+        private void makeDir()
+        {   //フォルダがなければ作る
+            if (!Directory.Exists(@".\Notes"))
+            {
+                Directory.CreateDirectory(@".\Notes");
+            }
+            if (!Directory.Exists(@".\rtf"))
+            {
+                Directory.CreateDirectory(@".\rtf");
             }
         }
 
