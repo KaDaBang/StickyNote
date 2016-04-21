@@ -19,7 +19,7 @@ namespace StickyNote
         static Color orange = Color.FromArgb(255, 192, 100);
         static Color white = Color.FromArgb(255, 255, 255);
 
-        static Color ActiveColor = Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
+        static Color ActiveColor = Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
         static Color deActiveColor = Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
 
         static Color colorButtonNotActive = Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
@@ -52,8 +52,8 @@ namespace StickyNote
             plusButton.BackColor = ActiveColor;
             closeButton.BackColor = ActiveColor;
             //ボタンのテキストを表示
-            plusButton.ForeColor = SystemColors.ControlDarkDark;
-            closeButton.ForeColor = SystemColors.ControlDarkDark;
+            plusButton.ForeColor = SystemColors.ControlDark;
+            closeButton.ForeColor = SystemColors.ControlDark;
             //テキストボックスにフォーカスする
             superRichTextBox1.Focus();
         }
@@ -153,6 +153,10 @@ namespace StickyNote
             {
                 closeButton.ForeColor = colorButtonNotActive;
             }
+            else
+            {
+                closeButton.ForeColor = SystemColors.ControlDark;
+            }
         }
 
         /********************************************************
@@ -173,6 +177,10 @@ namespace StickyNote
             if (Form.ActiveForm != this)
             {
                 plusButton.ForeColor = colorButtonNotActive;
+            }
+            else
+            {
+                plusButton.ForeColor = SystemColors.ControlDark;
             }
         }
 

@@ -143,7 +143,7 @@ namespace StickyNote
             this.plusButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.plusButton.FlatAppearance.BorderSize = 0;
             this.plusButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.plusButton.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.plusButton.ForeColor = System.Drawing.SystemColors.ControlDark;
             this.plusButton.Location = new System.Drawing.Point(4, 4);
             this.plusButton.Margin = new System.Windows.Forms.Padding(0);
             this.plusButton.Name = "plusButton";
@@ -211,7 +211,7 @@ namespace StickyNote
             this.closeButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.closeButton.FlatAppearance.BorderSize = 0;
             this.closeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.closeButton.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.closeButton.ForeColor = System.Drawing.SystemColors.ControlDark;
             this.closeButton.Location = new System.Drawing.Point(159, 4);
             this.closeButton.Margin = new System.Windows.Forms.Padding(0);
             this.closeButton.Name = "closeButton";
@@ -235,9 +235,9 @@ namespace StickyNote
             this.ControlBox = false;
             this.Controls.Add(this.closeButton);
             this.Controls.Add(this.plusButton);
+            this.Controls.Add(this.superRichTextBox1);
             this.Controls.Add(this.titleTextBox);
             this.Controls.Add(this.titleLabel);
-            this.Controls.Add(this.superRichTextBox1);
             this.Font = new System.Drawing.Font("メイリオ", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
