@@ -161,18 +161,12 @@ namespace StickyNote
             }
         }
 
-        public void noteClose(Form f)
-        {   //ノートを閉じる
-            f.Close();
-            noteCheck();
-        }
-
         public void noteCheck()
         {   //ノートが一つもなければアプリ終了
             if (Application.OpenForms.Count == 1)
             {
                 saveFlag = false;
-                Close();
+                Application.Exit();
             }
         }
     }

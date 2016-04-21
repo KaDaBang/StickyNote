@@ -19,7 +19,7 @@ namespace StickyNote
         static Color orange = Color.FromArgb(255, 192, 100);
         static Color white = Color.FromArgb(255, 255, 255);
 
-        static Color ActiveColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+        static Color ActiveColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
 
         static Color deActiveColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
 
@@ -132,7 +132,7 @@ namespace StickyNote
         */
         private void closeButton_DoubleClick(object sender, EventArgs e)
         {   //closeButtonでノートを閉じる
-            ((MainForm)Owner).noteClose(this);
+            Close();
         }
 
 
@@ -416,5 +416,9 @@ namespace StickyNote
                 e.HasMorePages = false;
         }
 
+        private void NoteForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            ((MainForm)Owner).noteCheck();
+        }
     }
 }
