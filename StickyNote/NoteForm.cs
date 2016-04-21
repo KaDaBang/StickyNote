@@ -12,12 +12,17 @@ namespace StickyNote
         Point mousepoint;
         int checkPrint;
         //色
-        private Color yellow = Color.FromArgb(255, 255, 192);
-        private Color green = Color.FromArgb(192, 255, 192);
-        private Color blue = Color.FromArgb(192, 255, 255);
-        private Color pink = Color.FromArgb(255, 192, 255);
-        private Color orange = Color.FromArgb(255, 192, 100);
-        private Color white = Color.FromArgb(255, 255, 255);
+        static Color yellow = Color.FromArgb(255, 255, 192);
+        static Color green = Color.FromArgb(192, 255, 192);
+        static Color blue = Color.FromArgb(192, 255, 255);
+        static Color pink = Color.FromArgb(255, 192, 255);
+        static Color orange = Color.FromArgb(255, 192, 100);
+        static Color white = Color.FromArgb(255, 255, 255);
+
+        static Color ActiveColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+
+        static Color deActiveColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+
         
         public bool isHyperLink
         {   //ハイパーリンクのON/OFF
@@ -39,6 +44,25 @@ namespace StickyNote
         {
             // setWindowHandle();
         }
+
+        private void NoteForm_Activated(object sender, EventArgs e)
+        {   //アクティブになったら、タイトルバーの色を濃くする
+            titleLabel.BackColor = ActiveColor;
+            plusButton.BackColor = ActiveColor;
+            closeButton.BackColor = ActiveColor;
+            //テキストボックスにフォーカスする
+            superRichTextBox1.Focus();
+        }
+
+        private void NoteForm_Deactivate(object sender, EventArgs e)
+        {   //非アクティブになったら、タイトルバーの色を薄くする
+            titleLabel.BackColor = deActiveColor;
+            plusButton.BackColor = deActiveColor;
+            closeButton.BackColor = deActiveColor;
+            //テキストボックスにフォーカスする
+            superRichTextBox1.Focus();
+        }
+
 
         /********************************************************
         ** titleLabel
