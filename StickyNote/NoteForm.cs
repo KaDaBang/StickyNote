@@ -178,8 +178,60 @@ namespace StickyNote
                 toggleHyperLink();
             }
 
+            if (e.KeyCode == Keys.OemPeriod && e.Control && !e.Shift)
+            {   //次のノート
+                changeActiveNote(this, true);
+            }
+            if (e.KeyCode == Keys.Oemcomma && e.Control && !e.Shift)
+            {   //前のノート
+                changeActiveNote(this, false);
+            }
+
         }
 
+        //アクティブなノートの切り替え
+        private void changeActiveNote(Form nowNote, Boolean go)
+        {   //nowNote:現在のノート　go:次のノート=true 前のノート=false
+
+            Form targetNote;    //切り替え先のノート
+            if (go)
+            {   //go=trueなら
+                if ((checkNoteId(nowNote) + 1) > Application.OpenForms.Count - 1)
+                {   //ノートの数がオーバーしていたら一つ目のノート
+                    targetNote = Application.OpenForms[1];
+                }
+                else
+                {   //オーバーしていなければ次のノート
+                    targetNote = Application.OpenForms[checkNoteId(nowNote) + 1];
+                }
+            }
+            else
+            {   //go=falseなら
+                if ((checkNoteId(nowNote) - 1) <= 0)
+                {   //ノートのidが０以下なら最後のノート
+                    targetNote = Application.OpenForms[Application.OpenForms.Count - 1];
+                }
+                else
+                {   //1以上なら前のノート
+                    targetNote = Application.OpenForms[checkNoteId(nowNote) - 1];
+                }
+            }
+            //targetNoteをアクティブにする
+            targetNote.Activate();
+        }
+
+        //アクティブなノートの、openForms上のIDを調べる
+        private int checkNoteId(Form nowNote)
+        {   //openFormsをループして、nowNoteと等しいものを見つける。
+            for (int i = 0; i <= Application.OpenForms.Count; i++)
+            {
+                if (nowNote == Application.OpenForms[i])
+                {
+                    return i;
+                }
+            }
+            return -1;
+        }
 
         /********************************************************
         ** ウインドウサイズ変更
