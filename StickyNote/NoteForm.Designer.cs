@@ -154,6 +154,8 @@ namespace StickyNote
             this.plusButton.UseCompatibleTextRendering = true;
             this.plusButton.UseVisualStyleBackColor = false;
             this.plusButton.Click += new System.EventHandler(this.plusButton_Click);
+            this.plusButton.MouseLeave += new System.EventHandler(this.plusButton_MouseLeave);
+            this.plusButton.MouseMove += new System.Windows.Forms.MouseEventHandler(this.plusButton_MouseMove);
             // 
             // titleTextBox
             // 
@@ -220,6 +222,8 @@ namespace StickyNote
             this.closeButton.UseCompatibleTextRendering = true;
             this.closeButton.UseVisualStyleBackColor = false;
             this.closeButton.DoubleClick += new System.EventHandler(this.closeButton_DoubleClick);
+            this.closeButton.MouseLeave += new System.EventHandler(this.closeButton_MouseLeave);
+            this.closeButton.MouseMove += new System.Windows.Forms.MouseEventHandler(this.closeButton_MouseMove);
             // 
             // NoteForm
             // 

@@ -19,11 +19,12 @@ namespace StickyNote
         static Color orange = Color.FromArgb(255, 192, 100);
         static Color white = Color.FromArgb(255, 255, 255);
 
-        static Color ActiveColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
+        static Color ActiveColor = Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
+        static Color deActiveColor = Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
 
-        static Color deActiveColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+        static Color colorButtonNotActive = Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
 
-        
+
         public bool isHyperLink
         {   //ハイパーリンクのON/OFF
             get { return superRichTextBox1.DetectUrls; }
@@ -50,6 +51,9 @@ namespace StickyNote
             titleLabel.BackColor = ActiveColor;
             plusButton.BackColor = ActiveColor;
             closeButton.BackColor = ActiveColor;
+            //ボタンのテキストを表示
+            plusButton.ForeColor = SystemColors.ControlDarkDark;
+            closeButton.ForeColor = SystemColors.ControlDarkDark;
             //テキストボックスにフォーカスする
             superRichTextBox1.Focus();
         }
@@ -59,6 +63,9 @@ namespace StickyNote
             titleLabel.BackColor = deActiveColor;
             plusButton.BackColor = deActiveColor;
             closeButton.BackColor = deActiveColor;
+            //ボタンのテキスト薄く
+            plusButton.ForeColor = colorButtonNotActive;
+            closeButton.ForeColor = colorButtonNotActive;
             //テキストボックスにフォーカスする
             superRichTextBox1.Focus();
         }
@@ -135,6 +142,18 @@ namespace StickyNote
             Close();
         }
 
+        private void closeButton_MouseMove(object sender, MouseEventArgs e)
+        {   //マウスが上に来たら
+            closeButton.ForeColor = SystemColors.ControlDarkDark;
+        }
+
+        private void closeButton_MouseLeave(object sender, EventArgs e)
+        {   //マウスが離れたら
+            if (Form.ActiveForm != this)
+            {
+                closeButton.ForeColor = colorButtonNotActive;
+            }
+        }
 
         /********************************************************
         ** plusButton
@@ -144,6 +163,18 @@ namespace StickyNote
             ((MainForm)Owner).newNote();
         }
 
+        private void plusButton_MouseMove(object sender, MouseEventArgs e)
+        {   //マウスが上に来たら
+            plusButton.ForeColor = SystemColors.ControlDarkDark;
+        }
+
+        private void plusButton_MouseLeave(object sender, EventArgs e)
+        {   //マウスが離れたら
+            if (Form.ActiveForm != this)
+            {
+                plusButton.ForeColor = colorButtonNotActive;
+            }
+        }
 
         /********************************************************
         ** superRichTextBox
@@ -420,5 +451,6 @@ namespace StickyNote
         {
             ((MainForm)Owner).noteCheck();
         }
+
     }
 }
