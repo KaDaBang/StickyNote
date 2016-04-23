@@ -161,6 +161,12 @@ namespace StickyNote
             }
         }
 
+        public void noteClose(Form note)
+        {   //ノートを閉じる
+            note.Close();
+            noteCheck();
+        }
+
         public void noteCheck()
         {   //ノートが一つもなければアプリ終了
             if (Application.OpenForms.Count == 1)

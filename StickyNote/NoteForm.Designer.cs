@@ -245,10 +245,10 @@ namespace StickyNote
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(100, 100);
             this.Name = "NoteForm";
+            this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.Activated += new System.EventHandler(this.NoteForm_Activated);
             this.Deactivate += new System.EventHandler(this.NoteForm_Deactivate);
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.NoteForm_FormClosed);
             this.Load += new System.EventHandler(this.NoteForm_Load);
             this.BackColorChanged += new System.EventHandler(this.NoteForm_BackColorChanged);
             this.contextMenuStrip1.ResumeLayout(false);

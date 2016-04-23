@@ -3,6 +3,7 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
+using System.Security.Permissions;
 
 namespace StickyNote
 {
@@ -139,7 +140,7 @@ namespace StickyNote
         */
         private void closeButton_DoubleClick(object sender, EventArgs e)
         {   //closeButtonでノートを閉じる
-            Close();
+            ((MainForm)Owner).noteClose(this);
         }
 
         private void closeButton_MouseMove(object sender, MouseEventArgs e)
@@ -248,6 +249,11 @@ namespace StickyNote
             if (e.KeyCode == Keys.Oemcomma && e.Control && !e.Shift)
             {   //前のノート
                 changeActiveNote(this, false);
+            }
+
+            if (e.KeyCode == Keys.F4 && e.Alt)
+            {   //ノート閉じる
+                ((MainForm)Owner).noteClose(this);
             }
 
         }
@@ -455,10 +461,24 @@ namespace StickyNote
                 e.HasMorePages = false;
         }
 
-        private void NoteForm_FormClosed(object sender, FormClosedEventArgs e)
+        /************************************************************ 
+        * 「閉じる」を無効化する 
+        */
+
+        protected override CreateParams CreateParams
         {
-            ((MainForm)Owner).noteCheck();
+            [SecurityPermission(SecurityAction.Demand,
+                Flags = SecurityPermissionFlag.UnmanagedCode)]
+            get
+            {
+                const int CS_NOCLOSE = 0x200;
+                CreateParams cp = base.CreateParams;
+                cp.ClassStyle = cp.ClassStyle | CS_NOCLOSE;
+
+                return cp;
+            }
         }
 
     }
+
 }
