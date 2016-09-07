@@ -11,7 +11,6 @@ namespace StickyNote
     {
         //フィールド変数の定義
         Point mousepoint;
-        int checkPrint;
         //色
         static Color yellow = Color.FromArgb(255, 255, 192);
         static Color green = Color.FromArgb(192, 255, 192);
@@ -25,16 +24,22 @@ namespace StickyNote
 
         static Color colorButtonNotActive = Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
 
+        public string title
+        {   //タイトル
+            get { return titleLabel.Text; }
+            set { titleLabel.Text = value; }
+        }
+
+        public SRichTextBoxLibrary.SuperRichTextBox sRichTextBox
+        {
+            get { return superRichTextBox1; }
+        }
 
         public bool isHyperLink
         {   //ハイパーリンクのON/OFF
             get { return superRichTextBox1.DetectUrls; }
             set { superRichTextBox1.DetectUrls = value; }
         }
-
-        //印刷用SuperRichTextBox作成
-        SRichTextBoxLibrary.SuperRichTextBox printSrtb =
-            new SRichTextBoxLibrary.SuperRichTextBox();
 
         public NoteForm()
         {
@@ -224,7 +229,7 @@ namespace StickyNote
         {   //ショートカット
             if (e.KeyCode == Keys.P && e.Control && !e.Shift)
             {   //Print [ctrl+P]
-                PrintNote();
+                ((MainForm)Owner).PrintNote(this);
             }
 
             if (e.KeyCode == Keys.N && e.Control && !e.Shift)
@@ -244,11 +249,11 @@ namespace StickyNote
 
             if (e.KeyCode == Keys.OemPeriod && e.Control && !e.Shift)
             {   //次のノート
-                changeActiveNote(this, true);
+                ((MainForm)Owner).changeActiveNote(this, true);
             }
             if (e.KeyCode == Keys.Oemcomma && e.Control && !e.Shift)
             {   //前のノート
-                changeActiveNote(this, false);
+                ((MainForm)Owner).changeActiveNote(this, false);
             }
 
             if (e.KeyCode == Keys.F4 && e.Alt)
@@ -257,51 +262,7 @@ namespace StickyNote
             }
 
         }
-
-        //アクティブなノートの切り替え
-        private void changeActiveNote(Form nowNote, Boolean go)
-        {   //nowNote:現在のノート　go:次のノート=true 前のノート=false
-
-            Form targetNote;    //切り替え先のノート
-            if (go)
-            {   //go=trueなら
-                if ((checkNoteId(nowNote) + 1) > Application.OpenForms.Count - 1)
-                {   //ノートの数がオーバーしていたら一つ目のノート
-                    targetNote = Application.OpenForms[1];
-                }
-                else
-                {   //オーバーしていなければ次のノート
-                    targetNote = Application.OpenForms[checkNoteId(nowNote) + 1];
-                }
-            }
-            else
-            {   //go=falseなら
-                if ((checkNoteId(nowNote) - 1) <= 0)
-                {   //ノートのidが０以下なら最後のノート
-                    targetNote = Application.OpenForms[Application.OpenForms.Count - 1];
-                }
-                else
-                {   //1以上なら前のノート
-                    targetNote = Application.OpenForms[checkNoteId(nowNote) - 1];
-                }
-            }
-            //targetNoteをアクティブにする
-            targetNote.Activate();
-        }
-
-        //アクティブなノートの、openForms上のIDを調べる
-        private int checkNoteId(Form nowNote)
-        {   //openFormsをループして、nowNoteと等しいものを見つける。
-            for (int i = 0; i <= Application.OpenForms.Count; i++)
-            {
-                if (nowNote == Application.OpenForms[i])
-                {
-                    return i;
-                }
-            }
-            return -1;
-        }
-
+                
         /********************************************************
         ** ウインドウサイズ変更
         */
@@ -412,8 +373,8 @@ namespace StickyNote
             {   //ハイパーリンクOFFならチェック外す
                 hyperlinkToolStripMenuItem.Checked = false;
             }
-        }
 
+        }
         private void toggleHyperLink()
         {   //ハイパーリンクのON/OFF
             if (isHyperLink == true)
@@ -424,41 +385,6 @@ namespace StickyNote
             {   //ハイパーリンクOFFならON
                 isHyperLink = true;
             }
-        }
-
-        /********************************************************
-        ** 印刷
-        */
-
-        public void PrintNote()
-        {   //ノートを印刷する
-            if (printDialog1.ShowDialog() == DialogResult.OK)
-            {
-                printSrtb.Text = titleLabel.Text + "\n\n";
-                printSrtb.SelectAll();
-                printSrtb.SelectionFont =
-                    new Font(printSrtb.SelectionFont.FontFamily,15, printSrtb.SelectionFont.Style);
-                printSrtb.SelectionStart = printSrtb.TextLength;
-                printSrtb.SelectedRtf = superRichTextBox1.Rtf;
-                printDocument1.Print();
-            }
-        }
-
-        private void printDocument1_BeginPrint(object sender, System.Drawing.Printing.PrintEventArgs e)
-        {
-            checkPrint = 0;
-        }
-
-        private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
-        {
-            // Print the content of RichTextBox. Store the last character printed.
-            checkPrint = printSrtb.Print(checkPrint, printSrtb.TextLength, e);
-
-            // Check for more pages
-            if (checkPrint < printSrtb.TextLength)
-                e.HasMorePages = true;
-            else
-                e.HasMorePages = false;
         }
 
         /************************************************************ 

@@ -14,7 +14,14 @@ namespace StickyNote
         bool saveFlag = true;   //ノートを保存するかどうか
         string rtfDir = @".\rtf\note";     //rtfを保存するフォルダのパス
         string rtfName;     //rtfファイルの名前
+        bool closing = false;
         //bool noteVisible = true;    //ノート表示/非表示の状態を表す
+
+        int checkPrint;
+        //印刷用SuperRichTextBox作成
+        SRichTextBoxLibrary.SuperRichTextBox printSrtb =
+            new SRichTextBoxLibrary.SuperRichTextBox();
+
 
         public MainForm()
         {
@@ -29,6 +36,7 @@ namespace StickyNote
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {   //終了時
+            closing = true;
             //ノート保存
             try
             {
@@ -175,5 +183,86 @@ namespace StickyNote
                 Application.Exit();
             }
         }
+
+        //アクティブなノートの切り替え
+        public void changeActiveNote(Form nowNote, Boolean go)
+        {   //nowNote:現在のノート　go:次のノート=true 前のノート=false
+
+            Form targetNote;    //切り替え先のノート
+            if (go)
+            {   //go=trueなら
+                if ((checkNoteId(nowNote) + 1) > Application.OpenForms.Count - 1)
+                {   //ノートの数がオーバーしていたら一つ目のノート
+                    targetNote = Application.OpenForms[1];
+                }
+                else
+                {   //オーバーしていなければ次のノート
+                    targetNote = Application.OpenForms[checkNoteId(nowNote) + 1];
+                }
+            }
+            else
+            {   //go=falseなら
+                if ((checkNoteId(nowNote) - 1) <= 0)
+                {   //ノートのidが０以下なら最後のノート
+                    targetNote = Application.OpenForms[Application.OpenForms.Count - 1];
+                }
+                else
+                {   //1以上なら前のノート
+                    targetNote = Application.OpenForms[checkNoteId(nowNote) - 1];
+                }
+            }
+            //targetNoteをアクティブにする
+            targetNote.Activate();
+        }
+
+        //アクティブなノートの、openForms上のIDを調べる
+        private int checkNoteId(Form nowNote)
+        {   //openFormsをループして、nowNoteと等しいものを見つける。
+            for (int i = 0; i <= Application.OpenForms.Count; i++)
+            {
+                if (nowNote == Application.OpenForms[i])
+                {
+                    return i;
+                }
+            }
+            return -1;
+        }
+
+        /********************************************************
+        ** 印刷
+        */
+
+        public void PrintNote(NoteForm noteForm)
+        {   //ノートを印刷する
+            if (printDialog1.ShowDialog() == DialogResult.OK)
+            {
+                printSrtb.Text = noteForm.title + "\n\n";
+                printSrtb.SelectAll();
+                printSrtb.SelectionFont =
+                    new Font(printSrtb.SelectionFont.FontFamily, 15, printSrtb.SelectionFont.Style);
+                printSrtb.SelectionStart = printSrtb.TextLength;
+                printSrtb.SelectedRtf = noteForm.richTextBox.Rtf;
+                printDocument1.Print();
+            }
+        }
+
+        private void printDocument1_BeginPrint(object sender, System.Drawing.Printing.PrintEventArgs e)
+        {
+            checkPrint = 0;
+        }
+
+        private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        {
+            // Print the content of RichTextBox. Store the last character printed.
+            checkPrint = printSrtb.Print(checkPrint, printSrtb.TextLength, e);
+
+            // Check for more pages
+            if (checkPrint < printSrtb.TextLength)
+                e.HasMorePages = true;
+            else
+                e.HasMorePages = false;
+        }
+
+
     }
 }

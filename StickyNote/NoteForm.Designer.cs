@@ -43,8 +43,6 @@ namespace StickyNote
             this.hyperlinkToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.plusButton = new System.Windows.Forms.Button();
             this.titleTextBox = new System.Windows.Forms.TextBox();
-            this.printDialog1 = new System.Windows.Forms.PrintDialog();
-            this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.superRichTextBox1 = new SRichTextBoxLibrary.SuperRichTextBox();
             this.closeButton = new StickyNote.DoubleClickButton();
             this.contextMenuStrip1.SuspendLayout();
@@ -71,6 +69,7 @@ namespace StickyNote
             // 
             // contextMenuStrip1
             // 
+            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.yellowToolStripMenuItem,
             this.greenToolStripMenuItem,
@@ -81,60 +80,60 @@ namespace StickyNote
             this.toolStripSeparator1,
             this.hyperlinkToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(136, 164);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(157, 178);
             this.contextMenuStrip1.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip1_Opening);
             // 
             // yellowToolStripMenuItem
             // 
             this.yellowToolStripMenuItem.Name = "yellowToolStripMenuItem";
-            this.yellowToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
+            this.yellowToolStripMenuItem.Size = new System.Drawing.Size(156, 24);
             this.yellowToolStripMenuItem.Text = "黄";
             this.yellowToolStripMenuItem.Click += new System.EventHandler(this.yellowToolStripMenuItem_Click);
             // 
             // greenToolStripMenuItem
             // 
             this.greenToolStripMenuItem.Name = "greenToolStripMenuItem";
-            this.greenToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
+            this.greenToolStripMenuItem.Size = new System.Drawing.Size(156, 24);
             this.greenToolStripMenuItem.Text = "緑";
             this.greenToolStripMenuItem.Click += new System.EventHandler(this.greenToolStripMenuItem_Click);
             // 
             // blueToolStripMenuItem
             // 
             this.blueToolStripMenuItem.Name = "blueToolStripMenuItem";
-            this.blueToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
+            this.blueToolStripMenuItem.Size = new System.Drawing.Size(156, 24);
             this.blueToolStripMenuItem.Text = "青";
             this.blueToolStripMenuItem.Click += new System.EventHandler(this.blueToolStripMenuItem_Click);
             // 
             // pinkToolStripMenuItem
             // 
             this.pinkToolStripMenuItem.Name = "pinkToolStripMenuItem";
-            this.pinkToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
+            this.pinkToolStripMenuItem.Size = new System.Drawing.Size(156, 24);
             this.pinkToolStripMenuItem.Text = "桃";
             this.pinkToolStripMenuItem.Click += new System.EventHandler(this.pinkToolStripMenuItem_Click);
             // 
             // orangeToolStripMenuItem
             // 
             this.orangeToolStripMenuItem.Name = "orangeToolStripMenuItem";
-            this.orangeToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
+            this.orangeToolStripMenuItem.Size = new System.Drawing.Size(156, 24);
             this.orangeToolStripMenuItem.Text = "橙";
             this.orangeToolStripMenuItem.Click += new System.EventHandler(this.orangeToolStripMenuItem_Click);
             // 
             // whiteToolStripMenuItem
             // 
             this.whiteToolStripMenuItem.Name = "whiteToolStripMenuItem";
-            this.whiteToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
+            this.whiteToolStripMenuItem.Size = new System.Drawing.Size(156, 24);
             this.whiteToolStripMenuItem.Text = "白";
             this.whiteToolStripMenuItem.Click += new System.EventHandler(this.whiteToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(132, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(153, 6);
             // 
             // hyperlinkToolStripMenuItem
             // 
             this.hyperlinkToolStripMenuItem.Name = "hyperlinkToolStripMenuItem";
-            this.hyperlinkToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
+            this.hyperlinkToolStripMenuItem.Size = new System.Drawing.Size(156, 24);
             this.hyperlinkToolStripMenuItem.Text = "ハイパーリンク";
             this.hyperlinkToolStripMenuItem.Click += new System.EventHandler(this.hyperlinkToolStripMenuItem_Click);
             // 
@@ -166,25 +165,12 @@ namespace StickyNote
             this.titleTextBox.Location = new System.Drawing.Point(24, 4);
             this.titleTextBox.Margin = new System.Windows.Forms.Padding(0);
             this.titleTextBox.Name = "titleTextBox";
-            this.titleTextBox.Size = new System.Drawing.Size(136, 21);
+            this.titleTextBox.Size = new System.Drawing.Size(136, 27);
             this.titleTextBox.TabIndex = 0;
             this.titleTextBox.TabStop = false;
             this.titleTextBox.Visible = false;
             this.titleTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
             this.titleTextBox.Leave += new System.EventHandler(this.textBox1_Leave);
-            // 
-            // printDialog1
-            // 
-            this.printDialog1.AllowPrintToFile = false;
-            this.printDialog1.AllowSelection = true;
-            this.printDialog1.AllowSomePages = true;
-            this.printDialog1.Document = this.printDocument1;
-            this.printDialog1.UseEXDialog = true;
-            // 
-            // printDocument1
-            // 
-            this.printDocument1.BeginPrint += new System.Drawing.Printing.PrintEventHandler(this.printDocument1_BeginPrint);
-            this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument1_PrintPage);
             // 
             // superRichTextBox1
             // 
@@ -227,7 +213,7 @@ namespace StickyNote
             // 
             // NoteForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 23F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 28F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
@@ -273,8 +259,6 @@ namespace StickyNote
         private System.Windows.Forms.ToolStripMenuItem whiteToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem hyperlinkToolStripMenuItem;
-        private System.Windows.Forms.PrintDialog printDialog1;
-        private System.Drawing.Printing.PrintDocument printDocument1;
     }
     public class DoubleClickButton : Button
     {
