@@ -24,12 +24,6 @@ namespace StickyNote
 
         static Color colorButtonNotActive = Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
 
-        public string title
-        {   //タイトル
-            get { return titleLabel.Text; }
-            set { titleLabel.Text = value; }
-        }
-
         public SRichTextBoxLibrary.SuperRichTextBox sRichTextBox
         {
             get { return superRichTextBox1; }
@@ -61,7 +55,7 @@ namespace StickyNote
             plusButton.ForeColor = SystemColors.ControlDark;
             closeButton.ForeColor = SystemColors.ControlDark;
             //テキストボックスにフォーカスする
-            superRichTextBox1.Focus();
+            superRichTextBox1.Select();
         }
 
         private void NoteForm_Deactivate(object sender, EventArgs e)
@@ -73,7 +67,7 @@ namespace StickyNote
             plusButton.ForeColor = colorButtonNotActive;
             closeButton.ForeColor = colorButtonNotActive;
             //テキストボックスにフォーカスする
-            superRichTextBox1.Focus();
+            superRichTextBox1.Select();
         }
 
 
@@ -121,14 +115,14 @@ namespace StickyNote
         {
             if (e.KeyChar == (char)Keys.Enter)
             {   //Enterが押されたら
-                superRichTextBox1.Focus();
+                superRichTextBox1.Select();
                 e.Handled = true;
             }
         }
 
         private void textBox1_Leave(object sender, EventArgs e)
         {
-            titleLabel.Text = titleTextBox.Text;
+            setTitle(titleTextBox.Text);
             titleTextBox.Visible = false;
         }
 
@@ -136,7 +130,7 @@ namespace StickyNote
         {
             titleTextBox.Text = titleLabel.Text;
             titleTextBox.Visible = true;
-            titleTextBox.Focus();
+            titleTextBox.Select();
         }
 
 
@@ -404,7 +398,6 @@ namespace StickyNote
                 return cp;
             }
         }
-
     }
 
 }

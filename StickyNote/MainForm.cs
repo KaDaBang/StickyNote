@@ -14,7 +14,6 @@ namespace StickyNote
         bool saveFlag = true;   //ノートを保存するかどうか
         string rtfDir = @".\rtf\note";     //rtfを保存するフォルダのパス
         string rtfName;     //rtfファイルの名前
-        bool closing = false;
         //bool noteVisible = true;    //ノート表示/非表示の状態を表す
 
         int checkPrint;
@@ -32,11 +31,11 @@ namespace StickyNote
         {   //MainFormロード時
             //ノート読み込み
             loadNotes();
+            ShowInTaskbar = true;
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {   //終了時
-            closing = true;
             //ノート保存
             try
             {
@@ -236,12 +235,12 @@ namespace StickyNote
         {   //ノートを印刷する
             if (printDialog1.ShowDialog() == DialogResult.OK)
             {
-                printSrtb.Text = noteForm.title + "\n\n";
+                printSrtb.Text = noteForm.getTitle() + "\n\n";
                 printSrtb.SelectAll();
                 printSrtb.SelectionFont =
                     new Font(printSrtb.SelectionFont.FontFamily, 15, printSrtb.SelectionFont.Style);
                 printSrtb.SelectionStart = printSrtb.TextLength;
-                printSrtb.SelectedRtf = noteForm.richTextBox.Rtf;
+                printSrtb.SelectedRtf = noteForm.sRichTextBox.Rtf;
                 printDocument1.Print();
             }
         }
@@ -262,7 +261,6 @@ namespace StickyNote
             else
                 e.HasMorePages = false;
         }
-
 
     }
 }
