@@ -33,6 +33,7 @@
     <WarningLevel>4</WarningLevel>
     <UseVSHostingProcess>false</UseVSHostingProcess>
     <LangVersion>default</LangVersion>
+    <DocumentationFile>bin\Release\StickyNote.XML</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationIcon>付箋.ico</ApplicationIcon>

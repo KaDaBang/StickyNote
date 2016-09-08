@@ -8,14 +8,18 @@ using System.Drawing;
 
 namespace StickyNote
 {
+    /// <summary>
+    /// メインフォームクラス
+    /// </summary>
     public partial class MainForm : Form
     {
-        string xmlName;
-        bool saveFlag = true;   //ノートを保存するかどうか
-        string rtfDir = @".\rtf\note";     //rtfを保存するフォルダのパス
-        string rtfName;     //rtfファイルの名前
-        //bool noteVisible = true;    //ノート表示/非表示の状態を表す
+        private string rtfDir = @".\rtf\note";     //rtfを保存するフォルダのパス
+        private string rtfName;     //rtfファイルの名前
+        private string xmlName;     //xmlファイルの名前
 
+        /// <summary>
+        /// メインフォームのコンストラクタ
+        /// </summary>
         public MainForm()
         {
             InitializeComponent();
@@ -41,31 +45,27 @@ namespace StickyNote
             }
         }
 
-
-
+        /// <summary>
+        /// ノート新規作成
+        /// </summary>
         public void newNote()
-        {   //ノート新規作成
+        {
             NoteForm noteForm = new NoteForm();
             noteForm.Owner = this;
             noteForm.Show();
         }
 
+        /// <summary>
+        /// ノートの保存
+        /// </summary>
         public void saveNotes()
-        {   //ノートを保存
-
+        {
             //フォルダ作成
             makeDir();
 
             //既にあるデータをクリア
             fileDel(@".\Notes");
             fileDel(@".\rtf");
-
-
-            if (saveFlag == false)
-            {
-                return;
-            }
-
 
             //XmlSerializerオブジェクトを作成
             XmlSerializer serializer = new XmlSerializer(typeof(Settings));
@@ -78,12 +78,10 @@ namespace StickyNote
                 settings.Size = nf.Size;
                 settings.Point = nf.Location;
                 settings.Color = nf.BackColor.ToArgb();
-                settings.Title = nf.getTitle();
+                settings.Title = nf.title;
                 settings.HyperLink = nf.isHyperLink;
-
                 rtfName = rtfDir + i + ".rtf";
                 settings.RtfName = rtfName;
-
                 nf.saveRtf(rtfName);
 
                 //ファイル名の作成
@@ -96,12 +94,14 @@ namespace StickyNote
             }
         }
 
+        /// <summary>
+        /// ノートの読み込み
+        /// </summary>
         public void loadNotes()
-        {   //ノートの読み込み
-
+        {
             //フォルダ作成
             makeDir();
-            
+
             //ノートを読込
             IEnumerable<string> files = Directory.EnumerateFiles(@".\Notes");
             XmlSerializer serializer = new XmlSerializer(typeof(Settings));
@@ -118,7 +118,7 @@ namespace StickyNote
                     nf.Location = settings.Point;
                     Color color = Color.FromArgb(settings.Color);
                     nf.BackColor = color;
-                    nf.setTitle(settings.Title);
+                    nf.title = settings.Title;
                     nf.isHyperLink = settings.HyperLink;
                     nf.loadRtf(settings.RtfName);
 
@@ -161,46 +161,51 @@ namespace StickyNote
             }
         }
 
+        /// <summary>
+        /// ノートを閉じる
+        /// </summary>
+        /// <param name="note">閉じるノート</param>
         public void noteClose(Form note)
-        {   //ノートを閉じる
+        {
             note.Close();
             noteCheck();
         }
 
-        public void noteCheck()
+        private void noteCheck()
         {   //ノートが一つもなければアプリ終了
             if (Application.OpenForms.Count == 1)
             {
-                saveFlag = false;
                 Application.Exit();
             }
         }
 
-        //アクティブなノートの切り替え
-        public void changeActiveNote(Form nowNote, Boolean go)
-        {   //nowNote:現在のノート　go:次のノート=true 前のノート=false
-
+        /// <summary>
+        /// アクティブなノートの切り替え
+        /// </summary>
+        /// <param name="go">次のノート=true 前のノート=false</param>
+        public void changeActiveNote(Boolean go)
+        {
             Form targetNote;    //切り替え先のノート
             if (go)
             {   //go=trueなら
-                if ((checkNoteId(nowNote) + 1) > Application.OpenForms.Count - 1)
+                if ((checkNoteId(ActiveForm) + 1) > Application.OpenForms.Count - 1)
                 {   //ノートの数がオーバーしていたら一つ目のノート
                     targetNote = Application.OpenForms[1];
                 }
                 else
                 {   //オーバーしていなければ次のノート
-                    targetNote = Application.OpenForms[checkNoteId(nowNote) + 1];
+                    targetNote = Application.OpenForms[checkNoteId(ActiveForm) + 1];
                 }
             }
             else
             {   //go=falseなら
-                if ((checkNoteId(nowNote) - 1) <= 0)
+                if ((checkNoteId(ActiveForm) - 1) <= 0)
                 {   //ノートのidが０以下なら最後のノート
                     targetNote = Application.OpenForms[Application.OpenForms.Count - 1];
                 }
                 else
                 {   //1以上なら前のノート
-                    targetNote = Application.OpenForms[checkNoteId(nowNote) - 1];
+                    targetNote = Application.OpenForms[checkNoteId(ActiveForm) - 1];
                 }
             }
             //targetNoteをアクティブにする
@@ -208,11 +213,11 @@ namespace StickyNote
         }
 
         //アクティブなノートの、openForms上のIDを調べる
-        private int checkNoteId(Form nowNote)
+        private int checkNoteId(Form note)
         {   //openFormsをループして、nowNoteと等しいものを見つける。
             for (int i = 0; i <= Application.OpenForms.Count; i++)
             {
-                if (nowNote == Application.OpenForms[i])
+                if (note == Application.OpenForms[i])
                 {
                     return i;
                 }

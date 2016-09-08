@@ -7,49 +7,59 @@ using System.Security.Permissions;
 
 namespace StickyNote
 {
+    /// <summary>
+    /// ノートフォームクラス
+    /// </summary>
     public partial class NoteForm : Form
     {
         //フィールド変数の定義
-        Point mousepoint;
+        private Point mousepoint;
         //色
-        static Color yellow = Color.FromArgb(255, 255, 192);
-        static Color green = Color.FromArgb(192, 255, 192);
-        static Color blue = Color.FromArgb(192, 255, 255);
-        static Color pink = Color.FromArgb(255, 192, 255);
-        static Color orange = Color.FromArgb(255, 192, 100);
-        static Color white = Color.FromArgb(255, 255, 255);
+        private static Color yellow = Color.FromArgb(255, 255, 192);
+        private static Color green = Color.FromArgb(192, 255, 192);
+        private static Color blue = Color.FromArgb(192, 255, 255);
+        private static Color pink = Color.FromArgb(255, 192, 255);
+        private static Color orange = Color.FromArgb(255, 192, 100);
+        private static Color white = Color.FromArgb(255, 255, 255);
 
-        static Color ActiveColor = Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-        static Color deActiveColor = Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+        private static Color ActiveColor = Color.FromArgb(255, 224, 224, 224);
+        private static Color deActiveColor = Color.FromArgb(100, 224, 224, 224);
 
-        static Color colorButtonNotActive = Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
+        private static Color colorButtonNotActive = Color.FromArgb(0, 200, 200, 200);
 
+        /// <summary>
+        /// ノートのタイトル取得・設定
+        /// </summary>
         public string title
         {   //タイトル
             get { return titleLabel.Text; }
             set { titleLabel.Text = value; }
         }
 
+        /// <summary>
+        /// SuperRichTextBoxの取得
+        /// </summary>
         public SRichTextBoxLibrary.SuperRichTextBox sRichTextBox
         {
             get { return superRichTextBox1; }
         }
 
+        /// <summary>
+        /// ハイパーリンクのON/OFF取得・設定
+        /// </summary>
         public bool isHyperLink
-        {   //ハイパーリンクのON/OFF
+        {
             get { return superRichTextBox1.DetectUrls; }
             set { superRichTextBox1.DetectUrls = value; }
         }
 
+        /// <summary>
+        /// ノートフォームのコンストラクタ
+        /// </summary>
         public NoteForm()
         {
             InitializeComponent();
             superRichTextBox1.BackColor = BackColor;
-        }
-
-        private void NoteForm_Load(object sender, EventArgs e)
-        {
-            // setWindowHandle();
         }
 
         private void NoteForm_Activated(object sender, EventArgs e)
@@ -76,24 +86,10 @@ namespace StickyNote
             superRichTextBox1.Focus();
         }
 
-
-        /********************************************************
-        ** titleLabel
-        */
-        public string getTitle()
-        {
-            return titleLabel.Text;
-        }
-
-        public void setTitle(string title)
-        {
-            titleLabel.Text = title;
-        }
-
         //タイトルラベルドラッグで、ノートを移動
         private void titleLabel_MouseDown(object sender, MouseEventArgs e)
         {   //左クリック時に位置を記憶
-            if(e.Button == MouseButtons.Left)
+            if (e.Button == MouseButtons.Left)
             {
                 mousepoint = new Point(e.X, e.Y);
             }
@@ -101,7 +97,7 @@ namespace StickyNote
 
         private void titleLabel_MouseMove(object sender, MouseEventArgs e)
         {   //ドラッグ時に位置を変更
-            if(e.Button == MouseButtons.Left)
+            if (e.Button == MouseButtons.Left)
             {
                 Left += e.X - mousepoint.X;
                 Top += e.Y - mousepoint.Y;
@@ -199,11 +195,19 @@ namespace StickyNote
             superRichTextBox1.BackColor = BackColor;
         }
 
+        /// <summary>
+        /// RTFを保存する
+        /// </summary>
+        /// <param name="filename">保存するファイル名</param>
         public void saveRtf(string filename)
-        {   
+        {
             superRichTextBox1.SaveFile(filename);
         }
 
+        /// <summary>
+        /// RTFを読み込む
+        /// </summary>
+        /// <param name="filename">読み込むファイル名</param>
         public void loadRtf(string filename)
         {
             superRichTextBox1.LoadFile(filename);
@@ -249,23 +253,26 @@ namespace StickyNote
 
             if (e.KeyCode == Keys.OemPeriod && e.Control && !e.Shift)
             {   //次のノート
-                ((MainForm)Owner).changeActiveNote(this, true);
+                ((MainForm)Owner).changeActiveNote(true);
             }
             if (e.KeyCode == Keys.Oemcomma && e.Control && !e.Shift)
             {   //前のノート
-                ((MainForm)Owner).changeActiveNote(this, false);
+                ((MainForm)Owner).changeActiveNote(false);
             }
 
             if (e.KeyCode == Keys.F4 && e.Alt)
             {   //ノート閉じる
                 ((MainForm)Owner).noteClose(this);
             }
-
         }
-                
+
         /********************************************************
         ** ウインドウサイズ変更
         */
+        /// <summary>
+        /// ヒットテストオーバーライド
+        /// </summary>
+        /// <param name="m">メッセージ</param>
         protected override void WndProc(ref Message m)
         {
             base.WndProc(ref m);
@@ -327,7 +334,6 @@ namespace StickyNote
         /********************************************************
         ** contextMenuStrip1
         */
-
         private void yellowToolStripMenuItem_Click(object sender, EventArgs e)
         {   //黄
             this.BackColor = yellow;
@@ -387,10 +393,9 @@ namespace StickyNote
             }
         }
 
-        /************************************************************ 
-        * 「閉じる」を無効化する 
-        */
-
+        /// <summary>
+        /// 「閉じる」を無効化する
+        /// </summary>
         protected override CreateParams CreateParams
         {
             [SecurityPermission(SecurityAction.Demand,
@@ -404,7 +409,5 @@ namespace StickyNote
                 return cp;
             }
         }
-
     }
-
 }

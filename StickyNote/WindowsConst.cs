@@ -1,5 +1,8 @@
 ﻿namespace StickyNote
 {
+    /// <summary>
+    /// ヒットテストの定義
+    /// </summary>
     public static class WindowsConst
     {
         public const int WM_NCHITTEST = 0x0084;
@@ -37,6 +40,5 @@
         public const int HTOBJECT = 19;
         public const int HTCLOSE = 20;
         public const int HTHELP = 21;
-
     }
 }
