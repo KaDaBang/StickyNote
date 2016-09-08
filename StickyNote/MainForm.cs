@@ -14,7 +14,6 @@ namespace StickyNote
     public partial class MainForm : Form
     {
         string xmlName;
-        bool saveFlag = true;   //ノートを保存するかどうか
         string rtfDir = @".\rtf\note";     //rtfを保存するフォルダのパス
         string rtfName;     //rtfファイルの名前
         bool closing = false;
@@ -234,34 +233,18 @@ namespace StickyNote
         /// </summary>
         /// <param name="noteForm">印刷するノート</param>
         public void PrintNote(NoteForm noteForm)
-        {   //ノートを印刷する
-            if (printDialog1.ShowDialog() == DialogResult.OK)
-            {
-                printSrtb.Text = noteForm.title + "\n\n";
-                printSrtb.SelectAll();
-                printSrtb.SelectionFont =
-                    new Font(printSrtb.SelectionFont.FontFamily, 15, printSrtb.SelectionFont.Style);
-                printSrtb.SelectionStart = printSrtb.TextLength;
-                printSrtb.SelectedRtf = noteForm.richTextBox.Rtf;
-                printDocument1.Print();
-            }
-        }
-
-        private void printDocument1_BeginPrint(object sender, System.Drawing.Printing.PrintEventArgs e)
         {
-            checkPrint = 0;
-        }
-
-        private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
-        {
-            // Print the content of RichTextBox. Store the last character printed.
-            checkPrint = printSrtb.Print(checkPrint, printSrtb.TextLength, e);
-
-            // Check for more pages
-            if (checkPrint < printSrtb.TextLength)
-                e.HasMorePages = true;
-            else
-                e.HasMorePages = false;
+            //印刷用テキストボックス作成
+            SRichTextBoxLibrary.SuperRichTextBox printSrtb =
+                new SRichTextBoxLibrary.SuperRichTextBox();
+            printSrtb.Text = noteForm.title + "\n\n";
+            printSrtb.SelectAll();
+            printSrtb.SelectionFont =
+                new Font(printSrtb.SelectionFont.FontFamily, 18, printSrtb.SelectionFont.Style);
+            printSrtb.SelectionStart = printSrtb.TextLength;
+            printSrtb.SelectedRtf = noteForm.sRichTextBox.Rtf;
+            //印刷
+            printSrtb.print();
         }
 
     }

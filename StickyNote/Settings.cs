@@ -7,6 +7,9 @@ using System.Drawing;
 
 namespace StickyNote
 {
+    /// <summary>
+    /// 設定保存用クラス
+    /// </summary>
     public class Settings
     {   //Noteのプロパティを保存するためのクラス
 
@@ -18,42 +21,54 @@ namespace StickyNote
         private bool _hyperlink;
         private string _rtfname;
 
-        //サイズ
+        /// <summary>
+        /// ノートのサイズ
+        /// </summary>
         public Size Size
         {
             get { return _size; }
             set { _size = value; }
         }
 
-        //位置
+        /// <summary>
+        /// ノートの位置
+        /// </summary>
         public Point Point
         {
             get { return _point; }
             set { _point = value; }
         }
 
-        //色
+        /// <summary>
+        /// ノートの色
+        /// </summary>
         public int Color
         {
             get { return _color; }
             set { _color = value; }
         }
 
-        //ノートタイトル
+        /// <summary>
+        /// ノートのタイトル
+        /// </summary>
         public string Title
         {
             get { return _title; }
             set { _title = value; }
         }
 
-        //ハイパーリンク
+        /// <summary>
+        /// ハイパーリンクの有効・無効
+        /// </summary>
         public bool HyperLink
         {
             get { return _hyperlink; }
             set { _hyperlink = value; }
         }
 
-        //rtfName
+        /// <summary>
+        /// RTFのファイル名
+        /// </summary>
         public string RtfName
         {
             get { return _rtfname; }

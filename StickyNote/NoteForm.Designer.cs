@@ -260,8 +260,15 @@ namespace StickyNote
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem hyperlinkToolStripMenuItem;
     }
+
+    /// <summary>
+    /// ダブルクリックボタンのクラス
+    /// </summary>
     public class DoubleClickButton : Button
     {
+        /// <summary>
+        /// ダブルクリックに対応
+        /// </summary>
         public DoubleClickButton() : base()
         {
             // Set the style so a double click event occurs.
