@@ -14,10 +14,8 @@ namespace StickyNote
         bool saveFlag = true;   //ノートを保存するかどうか
         string rtfDir = @".\rtf\note";     //rtfを保存するフォルダのパス
         string rtfName;     //rtfファイルの名前
-        bool closing = false;
         //bool noteVisible = true;    //ノート表示/非表示の状態を表す
 
-        int checkPrint;
         //印刷用SuperRichTextBox作成
         SRichTextBoxLibrary.SuperRichTextBox printSrtb =
             new SRichTextBoxLibrary.SuperRichTextBox();
@@ -36,7 +34,6 @@ namespace StickyNote
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {   //終了時
-            closing = true;
             //ノート保存
             try
             {
@@ -228,41 +225,20 @@ namespace StickyNote
             return -1;
         }
 
-        /********************************************************
-        ** 印刷
-        */
-
+        /// <summary>
+        /// ノートの印刷を行う。
+        /// </summary>
+        /// <param name="noteForm">印刷するノート</param>
         public void PrintNote(NoteForm noteForm)
         {   //ノートを印刷する
-            if (printDialog1.ShowDialog() == DialogResult.OK)
-            {
-                printSrtb.Text = noteForm.title + "\n\n";
-                printSrtb.SelectAll();
-                printSrtb.SelectionFont =
-                    new Font(printSrtb.SelectionFont.FontFamily, 15, printSrtb.SelectionFont.Style);
-                printSrtb.SelectionStart = printSrtb.TextLength;
-                printSrtb.SelectedRtf = noteForm.richTextBox.Rtf;
-                printDocument1.Print();
-            }
+            printSrtb.Text = noteForm.title + "\n\n";
+            printSrtb.SelectAll();
+            printSrtb.SelectionFont =
+                new Font(printSrtb.SelectionFont.FontFamily, 18, printSrtb.SelectionFont.Style);
+            printSrtb.SelectionStart = printSrtb.TextLength;
+            printSrtb.SelectedRtf = noteForm.sRichTextBox.Rtf;
+            printSrtb.print();
         }
-
-        private void printDocument1_BeginPrint(object sender, System.Drawing.Printing.PrintEventArgs e)
-        {
-            checkPrint = 0;
-        }
-
-        private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
-        {
-            // Print the content of RichTextBox. Store the last character printed.
-            checkPrint = printSrtb.Print(checkPrint, printSrtb.TextLength, e);
-
-            // Check for more pages
-            if (checkPrint < printSrtb.TextLength)
-                e.HasMorePages = true;
-            else
-                e.HasMorePages = false;
-        }
-
 
     }
 }
