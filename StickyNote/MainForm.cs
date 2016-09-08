@@ -16,7 +16,6 @@ namespace StickyNote
         string xmlName;
         string rtfDir = @".\rtf\note";     //rtfを保存するフォルダのパス
         string rtfName;     //rtfファイルの名前
-        bool closing = false;
         //bool noteVisible = true;    //ノート表示/非表示の状態を表す
 
         /// <summary>

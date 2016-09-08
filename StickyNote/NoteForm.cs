@@ -118,13 +118,13 @@ namespace StickyNote
 
         private void textBox1_Leave(object sender, EventArgs e)
         {
-            setTitle(titleTextBox.Text);
+            title = titleTextBox.Text;
             titleTextBox.Visible = false;
         }
 
         private void titleEdit()
         {
-            titleTextBox.Text = titleLabel.Text;
+            titleTextBox.Text = title;
             titleTextBox.Visible = true;
             titleTextBox.Select();
         }
