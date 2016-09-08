@@ -16,11 +16,6 @@ namespace StickyNote
         string rtfName;     //rtfファイルの名前
         //bool noteVisible = true;    //ノート表示/非表示の状態を表す
 
-        //印刷用SuperRichTextBox作成
-        SRichTextBoxLibrary.SuperRichTextBox printSrtb =
-            new SRichTextBoxLibrary.SuperRichTextBox();
-
-
         public MainForm()
         {
             InitializeComponent();
@@ -231,6 +226,10 @@ namespace StickyNote
         /// <param name="noteForm">印刷するノート</param>
         public void PrintNote(NoteForm noteForm)
         {   //ノートを印刷する
+            //印刷用SuperRichTextBox作成
+            SRichTextBoxLibrary.SuperRichTextBox printSrtb =
+                new SRichTextBoxLibrary.SuperRichTextBox();
+
             printSrtb.Text = noteForm.title + "\n\n";
             printSrtb.SelectAll();
             printSrtb.SelectionFont =
@@ -238,6 +237,7 @@ namespace StickyNote
             printSrtb.SelectionStart = printSrtb.TextLength;
             printSrtb.SelectedRtf = noteForm.sRichTextBox.Rtf;
             printSrtb.print();
+            printSrtb.Dispose();
         }
 
     }
