@@ -243,7 +243,8 @@ namespace StickyNote
             printSrtb.SelectionStart = printSrtb.TextLength;
             printSrtb.SelectedRtf = noteForm.sRichTextBox.Rtf;
             //印刷
-            printSrtb.printPageSetup();
+            printSrtb.print();
+            printSrtb.Dispose();
         }
 
     }

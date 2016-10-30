@@ -67,7 +67,7 @@ namespace StickyNote
             this.titleLabel.Margin = new System.Windows.Forms.Padding(0, 3, 0, 0);
             this.titleLabel.Name = "titleLabel";
             this.titleLabel.Size = new System.Drawing.Size(137, 20);
-            this.titleLabel.TabIndex = 1;
+            this.titleLabel.TabIndex = 2;
             this.titleLabel.UseCompatibleTextRendering = true;
             this.titleLabel.DoubleClick += new System.EventHandler(this.titleLabel_DoubleClick);
             this.titleLabel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.titleLabel_MouseDown);
@@ -201,7 +201,7 @@ namespace StickyNote
             this.plusButton.Margin = new System.Windows.Forms.Padding(0);
             this.plusButton.Name = "plusButton";
             this.plusButton.Size = new System.Drawing.Size(20, 20);
-            this.plusButton.TabIndex = 1;
+            this.plusButton.TabIndex = 2;
             this.plusButton.TabStop = false;
             this.plusButton.Text = "+";
             this.plusButton.UseCompatibleTextRendering = true;
@@ -220,7 +220,7 @@ namespace StickyNote
             this.titleTextBox.Margin = new System.Windows.Forms.Padding(0);
             this.titleTextBox.Name = "titleTextBox";
             this.titleTextBox.Size = new System.Drawing.Size(136, 27);
-            this.titleTextBox.TabIndex = 1;
+            this.titleTextBox.TabIndex = 2;
             this.titleTextBox.TabStop = false;
             this.titleTextBox.Visible = false;
             this.titleTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
@@ -241,7 +241,8 @@ namespace StickyNote
             this.superRichTextBox1.Location = new System.Drawing.Point(4, 28);
             this.superRichTextBox1.Name = "superRichTextBox1";
             this.superRichTextBox1.Size = new System.Drawing.Size(174, 150);
-            this.superRichTextBox1.TabIndex = 0;
+            this.superRichTextBox1.TabIndex = 1;
+            this.superRichTextBox1.TabStop = false;
             this.superRichTextBox1.Text = "";
             this.superRichTextBox1.LinkClicked += new System.Windows.Forms.LinkClickedEventHandler(this.superRichTextBox1_LinkClicked);
             this.superRichTextBox1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.superRichTextBox1_KeyDown);
@@ -257,7 +258,7 @@ namespace StickyNote
             this.closeButton.Margin = new System.Windows.Forms.Padding(0);
             this.closeButton.Name = "closeButton";
             this.closeButton.Size = new System.Drawing.Size(20, 20);
-            this.closeButton.TabIndex = 1;
+            this.closeButton.TabIndex = 2;
             this.closeButton.TabStop = false;
             this.closeButton.Text = "×";
             this.closeButton.UseCompatibleTextRendering = true;
