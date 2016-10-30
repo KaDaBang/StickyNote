@@ -19,6 +19,7 @@ namespace StickyNote
         private int _color;
         private string _title;
         private bool _hyperlink;
+        private bool _topmost;
         private string _rtfname;
 
         /// <summary>
@@ -64,6 +65,15 @@ namespace StickyNote
         {
             get { return _hyperlink; }
             set { _hyperlink = value; }
+        }
+
+        /// <summary>
+        /// 最前面表示の有効・無効
+        /// </summary>
+        public bool TopMost
+        {
+            get { return _topmost; }
+            set { _topmost = value; }
         }
 
         /// <summary>

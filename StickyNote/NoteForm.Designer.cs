@@ -34,14 +34,20 @@ namespace StickyNote
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NoteForm));
             this.titleLabel = new System.Windows.Forms.Label();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.yellowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.greenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.blueToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.pinkToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.orangeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.whiteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cutToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.copyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pasteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.fontToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.colorChangeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.YellowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.GreenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.BlueToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.PinkToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.OrangeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.WhiteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.hyperlinkToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.topMostToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.plusButton = new System.Windows.Forms.Button();
             this.titleTextBox = new System.Windows.Forms.TextBox();
             this.superRichTextBox1 = new SRichTextBoxLibrary.SuperRichTextBox();
@@ -54,7 +60,6 @@ namespace StickyNote
             this.titleLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.titleLabel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.titleLabel.ContextMenuStrip = this.contextMenuStrip1;
             this.titleLabel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.titleLabel.Font = new System.Drawing.Font("メイリオ", 10.5F);
             this.titleLabel.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
@@ -62,7 +67,7 @@ namespace StickyNote
             this.titleLabel.Margin = new System.Windows.Forms.Padding(0, 3, 0, 0);
             this.titleLabel.Name = "titleLabel";
             this.titleLabel.Size = new System.Drawing.Size(137, 20);
-            this.titleLabel.TabIndex = 0;
+            this.titleLabel.TabIndex = 1;
             this.titleLabel.UseCompatibleTextRendering = true;
             this.titleLabel.DoubleClick += new System.EventHandler(this.titleLabel_DoubleClick);
             this.titleLabel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.titleLabel_MouseDown);
@@ -72,71 +77,119 @@ namespace StickyNote
             // 
             this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.yellowToolStripMenuItem,
-            this.greenToolStripMenuItem,
-            this.blueToolStripMenuItem,
-            this.pinkToolStripMenuItem,
-            this.orangeToolStripMenuItem,
-            this.whiteToolStripMenuItem,
+            this.cutToolStripMenuItem1,
+            this.copyToolStripMenuItem,
+            this.pasteToolStripMenuItem,
+            this.fontToolStripMenuItem,
             this.toolStripSeparator1,
-            this.hyperlinkToolStripMenuItem});
+            this.colorChangeToolStripMenuItem,
+            this.hyperlinkToolStripMenuItem,
+            this.topMostToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(136, 164);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(172, 192);
             this.contextMenuStrip1.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip1_Opening);
             // 
-            // yellowToolStripMenuItem
+            // cutToolStripMenuItem1
             // 
-            this.yellowToolStripMenuItem.Name = "yellowToolStripMenuItem";
-            this.yellowToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
-            this.yellowToolStripMenuItem.Text = "黄";
-            this.yellowToolStripMenuItem.Click += new System.EventHandler(this.yellowToolStripMenuItem_Click);
+            this.cutToolStripMenuItem1.Name = "cutToolStripMenuItem1";
+            this.cutToolStripMenuItem1.Size = new System.Drawing.Size(171, 26);
+            this.cutToolStripMenuItem1.Text = "切り取り";
+            this.cutToolStripMenuItem1.Click += new System.EventHandler(this.切り取りToolStripMenuItem1_Click);
             // 
-            // greenToolStripMenuItem
+            // copyToolStripMenuItem
             // 
-            this.greenToolStripMenuItem.Name = "greenToolStripMenuItem";
-            this.greenToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
-            this.greenToolStripMenuItem.Text = "緑";
-            this.greenToolStripMenuItem.Click += new System.EventHandler(this.greenToolStripMenuItem_Click);
+            this.copyToolStripMenuItem.Name = "copyToolStripMenuItem";
+            this.copyToolStripMenuItem.Size = new System.Drawing.Size(171, 26);
+            this.copyToolStripMenuItem.Text = "コピー";
+            this.copyToolStripMenuItem.Click += new System.EventHandler(this.コピーToolStripMenuItem_Click);
             // 
-            // blueToolStripMenuItem
+            // pasteToolStripMenuItem
             // 
-            this.blueToolStripMenuItem.Name = "blueToolStripMenuItem";
-            this.blueToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
-            this.blueToolStripMenuItem.Text = "青";
-            this.blueToolStripMenuItem.Click += new System.EventHandler(this.blueToolStripMenuItem_Click);
+            this.pasteToolStripMenuItem.Name = "pasteToolStripMenuItem";
+            this.pasteToolStripMenuItem.Size = new System.Drawing.Size(171, 26);
+            this.pasteToolStripMenuItem.Text = "貼り付け";
+            this.pasteToolStripMenuItem.Click += new System.EventHandler(this.貼り付けToolStripMenuItem_Click);
             // 
-            // pinkToolStripMenuItem
+            // fontToolStripMenuItem
             // 
-            this.pinkToolStripMenuItem.Name = "pinkToolStripMenuItem";
-            this.pinkToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
-            this.pinkToolStripMenuItem.Text = "桃";
-            this.pinkToolStripMenuItem.Click += new System.EventHandler(this.pinkToolStripMenuItem_Click);
-            // 
-            // orangeToolStripMenuItem
-            // 
-            this.orangeToolStripMenuItem.Name = "orangeToolStripMenuItem";
-            this.orangeToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
-            this.orangeToolStripMenuItem.Text = "橙";
-            this.orangeToolStripMenuItem.Click += new System.EventHandler(this.orangeToolStripMenuItem_Click);
-            // 
-            // whiteToolStripMenuItem
-            // 
-            this.whiteToolStripMenuItem.Name = "whiteToolStripMenuItem";
-            this.whiteToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
-            this.whiteToolStripMenuItem.Text = "白";
-            this.whiteToolStripMenuItem.Click += new System.EventHandler(this.whiteToolStripMenuItem_Click);
+            this.fontToolStripMenuItem.Name = "fontToolStripMenuItem";
+            this.fontToolStripMenuItem.Size = new System.Drawing.Size(171, 26);
+            this.fontToolStripMenuItem.Text = "フォント";
+            this.fontToolStripMenuItem.Click += new System.EventHandler(this.フォントToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(132, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(168, 6);
+            // 
+            // colorChangeToolStripMenuItem
+            // 
+            this.colorChangeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.YellowToolStripMenuItem,
+            this.GreenToolStripMenuItem,
+            this.BlueToolStripMenuItem,
+            this.PinkToolStripMenuItem,
+            this.OrangeToolStripMenuItem,
+            this.WhiteToolStripMenuItem});
+            this.colorChangeToolStripMenuItem.Name = "colorChangeToolStripMenuItem";
+            this.colorChangeToolStripMenuItem.Size = new System.Drawing.Size(171, 26);
+            this.colorChangeToolStripMenuItem.Text = "色の変更";
+            // 
+            // YellowToolStripMenuItem
+            // 
+            this.YellowToolStripMenuItem.Name = "YellowToolStripMenuItem";
+            this.YellowToolStripMenuItem.Size = new System.Drawing.Size(99, 26);
+            this.YellowToolStripMenuItem.Text = "黄";
+            this.YellowToolStripMenuItem.Click += new System.EventHandler(this.yellowToolStripMenuItem_Click);
+            // 
+            // GreenToolStripMenuItem
+            // 
+            this.GreenToolStripMenuItem.Name = "GreenToolStripMenuItem";
+            this.GreenToolStripMenuItem.Size = new System.Drawing.Size(99, 26);
+            this.GreenToolStripMenuItem.Text = "緑";
+            this.GreenToolStripMenuItem.Click += new System.EventHandler(this.greenToolStripMenuItem_Click);
+            // 
+            // BlueToolStripMenuItem
+            // 
+            this.BlueToolStripMenuItem.Name = "BlueToolStripMenuItem";
+            this.BlueToolStripMenuItem.Size = new System.Drawing.Size(99, 26);
+            this.BlueToolStripMenuItem.Text = "青";
+            this.BlueToolStripMenuItem.Click += new System.EventHandler(this.blueToolStripMenuItem_Click);
+            // 
+            // PinkToolStripMenuItem
+            // 
+            this.PinkToolStripMenuItem.Name = "PinkToolStripMenuItem";
+            this.PinkToolStripMenuItem.Size = new System.Drawing.Size(99, 26);
+            this.PinkToolStripMenuItem.Text = "桃";
+            this.PinkToolStripMenuItem.Click += new System.EventHandler(this.pinkToolStripMenuItem_Click);
+            // 
+            // OrangeToolStripMenuItem
+            // 
+            this.OrangeToolStripMenuItem.Name = "OrangeToolStripMenuItem";
+            this.OrangeToolStripMenuItem.Size = new System.Drawing.Size(99, 26);
+            this.OrangeToolStripMenuItem.Text = "橙";
+            this.OrangeToolStripMenuItem.Click += new System.EventHandler(this.orangeToolStripMenuItem_Click);
+            // 
+            // WhiteToolStripMenuItem
+            // 
+            this.WhiteToolStripMenuItem.Name = "WhiteToolStripMenuItem";
+            this.WhiteToolStripMenuItem.Size = new System.Drawing.Size(99, 26);
+            this.WhiteToolStripMenuItem.Text = "白";
+            this.WhiteToolStripMenuItem.Click += new System.EventHandler(this.whiteToolStripMenuItem_Click);
             // 
             // hyperlinkToolStripMenuItem
             // 
             this.hyperlinkToolStripMenuItem.Name = "hyperlinkToolStripMenuItem";
-            this.hyperlinkToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
+            this.hyperlinkToolStripMenuItem.Size = new System.Drawing.Size(171, 26);
             this.hyperlinkToolStripMenuItem.Text = "ハイパーリンク";
             this.hyperlinkToolStripMenuItem.Click += new System.EventHandler(this.hyperlinkToolStripMenuItem_Click);
+            // 
+            // topMostToolStripMenuItem
+            // 
+            this.topMostToolStripMenuItem.Name = "topMostToolStripMenuItem";
+            this.topMostToolStripMenuItem.Size = new System.Drawing.Size(171, 26);
+            this.topMostToolStripMenuItem.Text = "最前面に表示";
+            this.topMostToolStripMenuItem.Click += new System.EventHandler(this.topMostToolStripMenuItem_Click);
             // 
             // plusButton
             // 
@@ -148,7 +201,7 @@ namespace StickyNote
             this.plusButton.Margin = new System.Windows.Forms.Padding(0);
             this.plusButton.Name = "plusButton";
             this.plusButton.Size = new System.Drawing.Size(20, 20);
-            this.plusButton.TabIndex = 0;
+            this.plusButton.TabIndex = 1;
             this.plusButton.TabStop = false;
             this.plusButton.Text = "+";
             this.plusButton.UseCompatibleTextRendering = true;
@@ -166,8 +219,8 @@ namespace StickyNote
             this.titleTextBox.Location = new System.Drawing.Point(24, 4);
             this.titleTextBox.Margin = new System.Windows.Forms.Padding(0);
             this.titleTextBox.Name = "titleTextBox";
-            this.titleTextBox.Size = new System.Drawing.Size(136, 21);
-            this.titleTextBox.TabIndex = 0;
+            this.titleTextBox.Size = new System.Drawing.Size(136, 27);
+            this.titleTextBox.TabIndex = 1;
             this.titleTextBox.TabStop = false;
             this.titleTextBox.Visible = false;
             this.titleTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
@@ -181,6 +234,7 @@ namespace StickyNote
             | System.Windows.Forms.AnchorStyles.Right)));
             this.superRichTextBox1.BackColor = this.BackColor;
             this.superRichTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.superRichTextBox1.ContextMenuStrip = this.contextMenuStrip1;
             this.superRichTextBox1.DetectUrls = false;
             this.superRichTextBox1.EnableAutoDragDrop = true;
             this.superRichTextBox1.Font = new System.Drawing.Font("メイリオ", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
@@ -203,7 +257,7 @@ namespace StickyNote
             this.closeButton.Margin = new System.Windows.Forms.Padding(0);
             this.closeButton.Name = "closeButton";
             this.closeButton.Size = new System.Drawing.Size(20, 20);
-            this.closeButton.TabIndex = 0;
+            this.closeButton.TabIndex = 1;
             this.closeButton.TabStop = false;
             this.closeButton.Text = "×";
             this.closeButton.UseCompatibleTextRendering = true;
@@ -214,7 +268,7 @@ namespace StickyNote
             // 
             // NoteForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 23F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 28F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
@@ -233,6 +287,7 @@ namespace StickyNote
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(100, 100);
             this.Name = "NoteForm";
+            this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.Activated += new System.EventHandler(this.NoteForm_Activated);
             this.Deactivate += new System.EventHandler(this.NoteForm_Deactivate);
@@ -251,14 +306,20 @@ namespace StickyNote
         private SRichTextBoxLibrary.SuperRichTextBox superRichTextBox1;
         private System.Windows.Forms.TextBox titleTextBox;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem yellowToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem greenToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem blueToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem pinkToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem orangeToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem whiteToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem hyperlinkToolStripMenuItem;
+        private ToolStripMenuItem colorChangeToolStripMenuItem;
+        private ToolStripMenuItem YellowToolStripMenuItem;
+        private ToolStripMenuItem GreenToolStripMenuItem;
+        private ToolStripMenuItem BlueToolStripMenuItem;
+        private ToolStripMenuItem PinkToolStripMenuItem;
+        private ToolStripMenuItem OrangeToolStripMenuItem;
+        private ToolStripMenuItem WhiteToolStripMenuItem;
+        private ToolStripMenuItem copyToolStripMenuItem;
+        private ToolStripMenuItem pasteToolStripMenuItem;
+        private ToolStripMenuItem fontToolStripMenuItem;
+        private ToolStripMenuItem cutToolStripMenuItem1;
+        private ToolStripMenuItem topMostToolStripMenuItem;
     }
 
     /// <summary>

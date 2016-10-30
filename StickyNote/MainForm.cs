@@ -16,7 +16,6 @@ namespace StickyNote
         string xmlName;
         string rtfDir = @".\rtf\note";     //rtfを保存するフォルダのパス
         string rtfName;     //rtfファイルの名前
-        //bool noteVisible = true;    //ノート表示/非表示の状態を表す
 
         /// <summary>
         /// メインフォームのコンストラクタ
@@ -30,7 +29,6 @@ namespace StickyNote
         {   //MainFormロード時
             //ノート読み込み
             loadNotes();
-            ShowInTaskbar = true;
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -82,6 +80,7 @@ namespace StickyNote
                 settings.Color = nf.BackColor.ToArgb();
                 settings.Title = nf.title;
                 settings.HyperLink = nf.isHyperLink;
+                settings.TopMost = nf.isTopMost;
                 rtfName = rtfDir + i + ".rtf";
                 settings.RtfName = rtfName;
                 nf.saveRtf(rtfName);
@@ -122,6 +121,7 @@ namespace StickyNote
                     nf.BackColor = color;
                     nf.title = settings.Title;
                     nf.isHyperLink = settings.HyperLink;
+                    nf.isTopMost = settings.TopMost;
                     nf.loadRtf(settings.RtfName);
 
                     nf.StartPosition = FormStartPosition.Manual;
@@ -243,7 +243,7 @@ namespace StickyNote
             printSrtb.SelectionStart = printSrtb.TextLength;
             printSrtb.SelectedRtf = noteForm.sRichTextBox.Rtf;
             //印刷
-            printSrtb.print();
+            printSrtb.printPageSetup();
         }
 
     }

@@ -27,6 +27,9 @@ namespace StickyNote
 
         private static Color colorButtonNotActive = Color.FromArgb(0, 200, 200, 200);
 
+        /// <summary>
+        /// ノートのタイトル
+        /// </summary>
         public string title
         {   //タイトル
             get { return titleLabel.Text; }
@@ -45,6 +48,14 @@ namespace StickyNote
         {
             get { return superRichTextBox1.DetectUrls; }
             set { superRichTextBox1.DetectUrls = value; }
+        }
+        /// <summary>
+        /// 最前面表示のON/OFF取得・設定
+        /// </summary>
+        public bool isTopMost
+        {
+            get { return TopMost; }
+            set { TopMost = value; }
         }
 
         /// <summary>
@@ -245,6 +256,11 @@ namespace StickyNote
                 toggleHyperLink();
             }
 
+            if (e.KeyCode == Keys.M && e.Control && !e.Shift)
+            {   //最前面表示のON/OFF
+                toggleTopMost();
+            }
+
             if (e.KeyCode == Keys.OemPeriod && e.Control && !e.Shift)
             {   //次のノート
                 ((MainForm)Owner).changeActiveNote(true);
@@ -328,6 +344,25 @@ namespace StickyNote
         /********************************************************
         ** contextMenuStrip1
         */
+        private void 切り取りToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            superRichTextBox1.Cut();
+        }
+
+        private void コピーToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            superRichTextBox1.Copy();
+        }
+
+        private void 貼り付けToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            superRichTextBox1.Paste();
+        }
+
+        private void フォントToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            superRichTextBox1.showFontDialog();
+        }
         private void yellowToolStripMenuItem_Click(object sender, EventArgs e)
         {   //黄
             this.BackColor = yellow;
@@ -362,6 +397,10 @@ namespace StickyNote
         {   //ハイパーリンクのON/OFF
             toggleHyperLink();
         }
+        private void topMostToolStripMenuItem_Click(object sender, EventArgs e)
+        {   //最前面表示のON/OFF
+            toggleTopMost();
+        }
 
         private void contextMenuStrip1_Opening(object sender, CancelEventArgs e)
         {   //メニューストリップ表示時
@@ -372,6 +411,15 @@ namespace StickyNote
             else
             {   //ハイパーリンクOFFならチェック外す
                 hyperlinkToolStripMenuItem.Checked = false;
+            }
+
+            if (TopMost == true)
+            {   //最前面表示がONならチェック
+                topMostToolStripMenuItem.Checked = true;
+            }
+            else
+            {   //最前面表示がOFFならチェック
+                topMostToolStripMenuItem.Checked = false;
             }
 
         }
@@ -385,6 +433,18 @@ namespace StickyNote
             {   //ハイパーリンクOFFならON
                 isHyperLink = true;
             }
+        }
+        private void toggleTopMost()
+        {   //最前面表示のON/OFF
+            if (TopMost == true)
+            {   //最前面表示がONならOFFに
+                TopMost = false;
+            }
+            else
+            {   //最前面表示がOFFならONに
+                TopMost = true;
+            }
+
         }
 
         /// <summary>
@@ -403,5 +463,6 @@ namespace StickyNote
                 return cp;
             }
         }
+
     }
 }
