@@ -66,12 +66,13 @@ namespace StickyNote
             this.titleLabel.Location = new System.Drawing.Point(23, 4);
             this.titleLabel.Margin = new System.Windows.Forms.Padding(0, 3, 0, 0);
             this.titleLabel.Name = "titleLabel";
-            this.titleLabel.Size = new System.Drawing.Size(137, 20);
+            this.titleLabel.Size = new System.Drawing.Size(152, 20);
             this.titleLabel.TabIndex = 2;
             this.titleLabel.UseCompatibleTextRendering = true;
             this.titleLabel.DoubleClick += new System.EventHandler(this.titleLabel_DoubleClick);
             this.titleLabel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.titleLabel_MouseDown);
             this.titleLabel.MouseMove += new System.Windows.Forms.MouseEventHandler(this.titleLabel_MouseMove);
+            this.titleLabel.MouseUp += new System.Windows.Forms.MouseEventHandler(this.titleLabel_MouseUp);
             // 
             // contextMenuStrip1
             // 
@@ -219,7 +220,7 @@ namespace StickyNote
             this.titleTextBox.Location = new System.Drawing.Point(24, 4);
             this.titleTextBox.Margin = new System.Windows.Forms.Padding(0);
             this.titleTextBox.Name = "titleTextBox";
-            this.titleTextBox.Size = new System.Drawing.Size(136, 27);
+            this.titleTextBox.Size = new System.Drawing.Size(151, 27);
             this.titleTextBox.TabIndex = 2;
             this.titleTextBox.TabStop = false;
             this.titleTextBox.Visible = false;
@@ -240,7 +241,7 @@ namespace StickyNote
             this.superRichTextBox1.Font = new System.Drawing.Font("メイリオ", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.superRichTextBox1.Location = new System.Drawing.Point(4, 28);
             this.superRichTextBox1.Name = "superRichTextBox1";
-            this.superRichTextBox1.Size = new System.Drawing.Size(174, 150);
+            this.superRichTextBox1.Size = new System.Drawing.Size(189, 165);
             this.superRichTextBox1.TabIndex = 1;
             this.superRichTextBox1.TabStop = false;
             this.superRichTextBox1.Text = "";
@@ -254,7 +255,7 @@ namespace StickyNote
             this.closeButton.FlatAppearance.BorderSize = 0;
             this.closeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.closeButton.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.closeButton.Location = new System.Drawing.Point(159, 4);
+            this.closeButton.Location = new System.Drawing.Point(174, 4);
             this.closeButton.Margin = new System.Windows.Forms.Padding(0);
             this.closeButton.Name = "closeButton";
             this.closeButton.Size = new System.Drawing.Size(20, 20);
@@ -273,13 +274,13 @@ namespace StickyNote
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.ClientSize = new System.Drawing.Size(183, 183);
+            this.ClientSize = new System.Drawing.Size(198, 198);
             this.ControlBox = false;
             this.Controls.Add(this.closeButton);
             this.Controls.Add(this.plusButton);
             this.Controls.Add(this.superRichTextBox1);
-            this.Controls.Add(this.titleTextBox);
             this.Controls.Add(this.titleLabel);
+            this.Controls.Add(this.titleTextBox);
             this.Font = new System.Drawing.Font("メイリオ", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -292,6 +293,7 @@ namespace StickyNote
             this.ShowInTaskbar = false;
             this.Activated += new System.EventHandler(this.NoteForm_Activated);
             this.Deactivate += new System.EventHandler(this.NoteForm_Deactivate);
+            this.ResizeEnd += new System.EventHandler(this.NoteForm_ResizeEnd);
             this.BackColorChanged += new System.EventHandler(this.NoteForm_BackColorChanged);
             this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
