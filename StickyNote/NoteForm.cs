@@ -27,7 +27,7 @@ namespace StickyNote
 
         private static Color colorButtonNotActive = Color.FromArgb(0, 200, 200, 200);
 
-        private static int grid = 10;
+        private static int grid = 5;
         /// <summary>
         /// ノートのタイトル
         /// </summary>
@@ -464,7 +464,7 @@ namespace StickyNote
                 return cp;
             }
         }
-        
+
         /// <summary>
         /// 値を四捨五入します
         /// </summary>
@@ -483,38 +483,38 @@ namespace StickyNote
 
         private void NoteForm_ResizeEnd(object sender, EventArgs e)
         {
-            if (Height / grid == 0 && Width / grid == 0)
+            if (Height % grid == 0 && Width % grid == 0)
             {   //すでにグリッドに従っている場合
                 return;
             }
 
-            if (Height / grid != 0)
+            if (Height % grid != 0)
             {   //高さ
-                Height = (int)Round(Height, -1, MidpointRounding.AwayFromZero);
+                Height = (int)Round(Height * 2, -1, MidpointRounding.AwayFromZero) / 2;
             }
 
-            if (Width / grid != 0)
+            if (Width % grid != 0)
             {   //幅
-                Width = (int)Round(Width, -1, MidpointRounding.AwayFromZero);
+                Width = (int)Round(Width * 2, -1, MidpointRounding.AwayFromZero) / 2;
             }
 
         }
 
         private void titleLabel_MouseUp(object sender, MouseEventArgs e)
         {
-            if (Left / grid == 0 && Top / grid == 0)
+            if (Left % grid == 0 && Top % grid == 0)
             {   //すでにグリッドに従っている場合
                 return;
             }
 
-            if (Left / grid != 0)
+            if (Left % grid != 0)
             {   //x座標
-                Left = (int)Round(Left, -1, MidpointRounding.AwayFromZero);
+                Left = (int)Round(Left * 2, -1, MidpointRounding.AwayFromZero) / 2;
             }
 
-            if (Top / grid != 0)
+            if (Top % grid != 0)
             {   //y座標
-                Top = (int)Round(Top, -1, MidpointRounding.AwayFromZero);
+                Top = (int)Round(Top * 2, -1, MidpointRounding.AwayFromZero) / 2;
             }
 
         }
