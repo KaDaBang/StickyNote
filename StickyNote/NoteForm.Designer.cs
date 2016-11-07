@@ -276,11 +276,11 @@ namespace StickyNote
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(198, 198);
             this.ControlBox = false;
+            this.Controls.Add(this.titleTextBox);
             this.Controls.Add(this.closeButton);
             this.Controls.Add(this.plusButton);
             this.Controls.Add(this.superRichTextBox1);
             this.Controls.Add(this.titleLabel);
-            this.Controls.Add(this.titleTextBox);
             this.Font = new System.Drawing.Font("メイリオ", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));

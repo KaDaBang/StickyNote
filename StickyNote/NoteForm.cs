@@ -115,6 +115,10 @@ namespace StickyNote
             titleEdit();
         }
 
+        private void titleLabel_MouseUp(object sender, MouseEventArgs e)
+        {   //位置変更が終わったとき
+            FitGrid();
+        }
 
         /********************************************************
         ** titleTextBox
@@ -342,6 +346,11 @@ namespace StickyNote
             }
         }
 
+        private void NoteForm_ResizeEnd(object sender, EventArgs e)
+        {   //サイズ変更が終わったとき
+            FitGrid();
+        }
+
         /********************************************************
         ** contextMenuStrip1
         */
@@ -480,10 +489,10 @@ namespace StickyNote
 
             return Math.Round(value * pow, mode) / pow;
         }
-
-        private void NoteForm_ResizeEnd(object sender, EventArgs e)
-        {
-            if (Height % grid == 0 && Width % grid == 0)
+        
+        private void FitGrid()
+        {   //サイズと位置をグリッドに合わせる
+            if (Height % grid == 0 && Width % grid == 0 && Left % grid == 0 && Top % grid == 0)
             {   //すでにグリッドに従っている場合
                 return;
             }
@@ -498,15 +507,6 @@ namespace StickyNote
                 Width = (int)Round(Width * 2, -1, MidpointRounding.AwayFromZero) / 2;
             }
 
-        }
-
-        private void titleLabel_MouseUp(object sender, MouseEventArgs e)
-        {
-            if (Left % grid == 0 && Top % grid == 0)
-            {   //すでにグリッドに従っている場合
-                return;
-            }
-
             if (Left % grid != 0)
             {   //x座標
                 Left = (int)Round(Left * 2, -1, MidpointRounding.AwayFromZero) / 2;
@@ -517,6 +517,8 @@ namespace StickyNote
                 Top = (int)Round(Top * 2, -1, MidpointRounding.AwayFromZero) / 2;
             }
 
+
         }
+
     }
 }
