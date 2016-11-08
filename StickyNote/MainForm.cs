@@ -5,7 +5,6 @@ using System.Xml.Serialization;
 using System.IO;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Collections;
 
 namespace StickyNote
 {
@@ -260,5 +259,9 @@ namespace StickyNote
             printSrtb.Dispose();
         }
 
+        private void MainForm_KeyDown(object sender, KeyEventArgs e)
+        {
+            notes[0].Activate();
+        }
     }
 }
