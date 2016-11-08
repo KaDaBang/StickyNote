@@ -293,6 +293,7 @@ namespace StickyNote
             this.ShowInTaskbar = false;
             this.Activated += new System.EventHandler(this.NoteForm_Activated);
             this.Deactivate += new System.EventHandler(this.NoteForm_Deactivate);
+            this.Load += new System.EventHandler(this.NoteForm_Load);
             this.ResizeEnd += new System.EventHandler(this.NoteForm_ResizeEnd);
             this.BackColorChanged += new System.EventHandler(this.NoteForm_BackColorChanged);
             this.contextMenuStrip1.ResumeLayout(false);

@@ -37,6 +37,9 @@ namespace StickyNote
             set { titleLabel.Text = value; }
         }
 
+        /// <summary>
+        /// SuperRichTextBox
+        /// </summary>
         public SRichTextBoxLibrary.SuperRichTextBox sRichTextBox
         {
             get { return superRichTextBox1; }
@@ -66,6 +69,11 @@ namespace StickyNote
         {
             InitializeComponent();
             superRichTextBox1.BackColor = BackColor;
+        }
+
+        private void NoteForm_Load(object sender, EventArgs e)
+        {
+            FitGrid();
         }
 
         private void NoteForm_Activated(object sender, EventArgs e)
@@ -489,7 +497,7 @@ namespace StickyNote
 
             return Math.Round(value * pow, mode) / pow;
         }
-        
+
         private void FitGrid()
         {   //サイズと位置をグリッドに合わせる
             if (Height % grid == 0 && Width % grid == 0 && Left % grid == 0 && Top % grid == 0)
