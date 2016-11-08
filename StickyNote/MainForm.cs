@@ -5,6 +5,7 @@ using System.Xml.Serialization;
 using System.IO;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Collections;
 
 namespace StickyNote
 {
@@ -16,6 +17,8 @@ namespace StickyNote
         string xmlName;
         string rtfDir = @".\rtf\note";     //rtfを保存するフォルダのパス
         string rtfName;     //rtfファイルの名前
+
+        public List<Form> notes = new List<Form>();
 
         /// <summary>
         /// メインフォームのコンストラクタ
@@ -51,6 +54,7 @@ namespace StickyNote
         public void newNote()
         {
             NoteForm noteForm = new NoteForm();
+            notes.Add(noteForm);
             noteForm.Owner = this;
             noteForm.Show();
         }
@@ -115,6 +119,7 @@ namespace StickyNote
                     sr.Close();
                     //ノートを作ってプロパティをセット
                     NoteForm nf = new NoteForm();
+                    notes.Add(nf);
                     nf.Size = settings.Size;
                     nf.Location = settings.Point;
                     Color color = Color.FromArgb(settings.Color);
@@ -169,6 +174,7 @@ namespace StickyNote
         /// <param name="note">閉じるノート</param>
         public void noteClose(Form note)
         {
+            notes.Remove(note);
             note.Close();
             noteCheck();
         }
@@ -188,26 +194,30 @@ namespace StickyNote
         public void changeActiveNote(Boolean go)
         {
             Form targetNote;    //切り替え先のノート
+
+            LocationComparer comp = new LocationComparer();
+            notes.Sort(comp);
+
             if (go)
             {   //go=trueなら
-                if ((checkNoteId(ActiveForm) + 1) > Application.OpenForms.Count - 1)
+                if ((checkNoteId(notes) + 1) >= notes.Count)
                 {   //ノートの数がオーバーしていたら一つ目のノート
-                    targetNote = Application.OpenForms[1];
+                    targetNote = notes[0];
                 }
                 else
                 {   //オーバーしていなければ次のノート
-                    targetNote = Application.OpenForms[checkNoteId(ActiveForm) + 1];
+                    targetNote = notes[checkNoteId(notes) + 1];
                 }
             }
             else
             {   //go=falseなら
-                if ((checkNoteId(ActiveForm) - 1) <= 0)
-                {   //ノートのidが０以下なら最後のノート
-                    targetNote = Application.OpenForms[Application.OpenForms.Count - 1];
+                if ((checkNoteId(notes) - 1) < 0)
+                {   //ノートのidが０未満なら最後のノート
+                    targetNote = notes[notes.Count - 1];
                 }
                 else
                 {   //1以上なら前のノート
-                    targetNote = Application.OpenForms[checkNoteId(ActiveForm) - 1];
+                    targetNote = notes[checkNoteId(notes) - 1];
                 }
             }
             //targetNoteをアクティブにする
@@ -215,11 +225,12 @@ namespace StickyNote
         }
 
         //アクティブなノートの、openForms上のIDを調べる
-        private int checkNoteId(Form note)
+        private int checkNoteId(List<Form> notes)
         {   //openFormsをループして、nowNoteと等しいものを見つける。
-            for (int i = 0; i <= Application.OpenForms.Count; i++)
+
+            for (int i = 0; i < notes.Count; i++)
             {
-                if (note == Application.OpenForms[i])
+                if (object.Equals(notes[i], ActiveForm))
                 {
                     return i;
                 }
