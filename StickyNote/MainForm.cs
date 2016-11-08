@@ -18,7 +18,7 @@ namespace StickyNote
         string rtfDir = @".\rtf\note";     //rtfを保存するフォルダのパス
         string rtfName;     //rtfファイルの名前
 
-        public List<Form> notes = new List<Form>();
+        private List<Form> notes = new List<Form>();
 
         /// <summary>
         /// メインフォームのコンストラクタ
@@ -191,33 +191,35 @@ namespace StickyNote
         /// アクティブなノートの切り替え
         /// </summary>
         /// <param name="go">次のノート=true 前のノート=false</param>
-        public void changeActiveNote(Boolean go)
+        public void changeActiveNote(bool go)
         {
             Form targetNote;    //切り替え先のノート
 
             LocationComparer comp = new LocationComparer();
             notes.Sort(comp);
 
+            int noteId = checkNoteId();
+
             if (go)
             {   //go=trueなら
-                if ((checkNoteId(notes) + 1) >= notes.Count)
+                if ((noteId + 1) >= notes.Count)
                 {   //ノートの数がオーバーしていたら一つ目のノート
                     targetNote = notes[0];
                 }
                 else
                 {   //オーバーしていなければ次のノート
-                    targetNote = notes[checkNoteId(notes) + 1];
+                    targetNote = notes[noteId + 1];
                 }
             }
             else
             {   //go=falseなら
-                if ((checkNoteId(notes) - 1) < 0)
+                if ((noteId - 1) < 0)
                 {   //ノートのidが０未満なら最後のノート
                     targetNote = notes[notes.Count - 1];
                 }
                 else
                 {   //1以上なら前のノート
-                    targetNote = notes[checkNoteId(notes) - 1];
+                    targetNote = notes[noteId - 1];
                 }
             }
             //targetNoteをアクティブにする
@@ -225,12 +227,12 @@ namespace StickyNote
         }
 
         //アクティブなノートの、openForms上のIDを調べる
-        private int checkNoteId(List<Form> notes)
+        private int checkNoteId()
         {   //openFormsをループして、nowNoteと等しいものを見つける。
 
             for (int i = 0; i < notes.Count; i++)
             {
-                if (object.Equals(notes[i], ActiveForm))
+                if (Equals(notes[i], ActiveForm))
                 {
                     return i;
                 }
