@@ -246,8 +246,8 @@ namespace StickyNote
         public void PrintNote(NoteForm noteForm)
         {
             //印刷用テキストボックス作成
-            SRichTextBoxLibrary.SuperRichTextBox printSrtb =
-                new SRichTextBoxLibrary.SuperRichTextBox();
+            SuperRichTextBox printSrtb =
+                new SuperRichTextBox();
             printSrtb.Text = noteForm.title + "\n\n";
             printSrtb.SelectAll();
             printSrtb.SelectionFont =

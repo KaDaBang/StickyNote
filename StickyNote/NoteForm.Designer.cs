@@ -50,7 +50,7 @@ namespace StickyNote
             this.topMostToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.plusButton = new System.Windows.Forms.Button();
             this.titleTextBox = new System.Windows.Forms.TextBox();
-            this.superRichTextBox1 = new SRichTextBoxLibrary.SuperRichTextBox();
+            this.superRichTextBox1 = new SuperRichTextBox();
             this.closeButton = new StickyNote.DoubleClickButton();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -304,14 +304,14 @@ namespace StickyNote
 
         #endregion
 
-        private System.Windows.Forms.Label titleLabel;
-        private System.Windows.Forms.Button plusButton;
+        private Label titleLabel;
+        private Button plusButton;
         private DoubleClickButton closeButton;
-        private SRichTextBoxLibrary.SuperRichTextBox superRichTextBox1;
-        private System.Windows.Forms.TextBox titleTextBox;
-        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripMenuItem hyperlinkToolStripMenuItem;
+        private SuperRichTextBox superRichTextBox1;
+        private TextBox titleTextBox;
+        private ContextMenuStrip contextMenuStrip1;
+        private ToolStripSeparator toolStripSeparator1;
+        private ToolStripMenuItem hyperlinkToolStripMenuItem;
         private ToolStripMenuItem colorChangeToolStripMenuItem;
         private ToolStripMenuItem YellowToolStripMenuItem;
         private ToolStripMenuItem GreenToolStripMenuItem;

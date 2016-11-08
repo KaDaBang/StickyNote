@@ -39,7 +39,7 @@ namespace StickyNote
         /// <summary>
         /// SuperRichTextBox
         /// </summary>
-        public SRichTextBoxLibrary.SuperRichTextBox sRichTextBox
+        public SuperRichTextBox sRichTextBox
         {
             get { return superRichTextBox1; }
         }
