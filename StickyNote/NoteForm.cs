@@ -27,6 +27,10 @@ namespace StickyNote
         private static Color colorButtonNotActive = Color.FromArgb(0, 200, 200, 200);
 
         private static int grid = 5;
+
+        //印刷用テキストボックスを作成
+        private SuperRichTextBox printSrtb = new SuperRichTextBox();
+
         /// <summary>
         /// ノートのタイトル
         /// </summary>
@@ -246,43 +250,29 @@ namespace StickyNote
         /********************************************************
         ** ショートカットの定義
         */
-        private void superRichTextBox1_KeyDown(object sender, KeyEventArgs e)
-        {   //ショートカット
-            if (e.KeyCode == Keys.P && e.Control && !e.Shift)
-            {   //Print [ctrl+P]
-                ((MainForm)Owner).PrintNote(this);
-            }
-
-            if (e.KeyCode == Keys.N && e.Control && !e.Shift)
+        private void NoteForm_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.N && e.Control && !e.Shift && !e.Alt)
             {   //新しいノート
                 ((MainForm)Owner).newNote();
             }
 
-            if (e.KeyCode == Keys.T && e.Control && e.Shift)
+            if (e.KeyCode == Keys.T && e.Control && e.Shift && !e.Alt)
             {   //タイトル編集
                 titleEdit();
             }
 
-            if (e.KeyCode == Keys.H && e.Control && !e.Shift)
-            {   //ハイパーリンクのON/OFF
-                toggleHyperLink();
-            }
-
-            if (e.KeyCode == Keys.M && e.Control && !e.Shift)
-            {   //最前面表示のON/OFF
-                toggleTopMost();
-            }
-
-            if (e.KeyCode == Keys.OemPeriod && e.Control && !e.Shift)
+            if (e.KeyCode == Keys.OemPeriod && e.Control && !e.Shift && !e.Alt)
             {   //次のノート
                 ((MainForm)Owner).changeActiveNote(true);
             }
-            if (e.KeyCode == Keys.Oemcomma && e.Control && !e.Shift)
+
+            if (e.KeyCode == Keys.Oemcomma && e.Control && !e.Shift && !e.Alt)
             {   //前のノート
                 ((MainForm)Owner).changeActiveNote(false);
             }
 
-            if (e.KeyCode == Keys.F4 && e.Alt)
+            if (e.KeyCode == Keys.F4 && e.Alt )
             {   //ノート閉じる
                 ((MainForm)Owner).noteClose(this);
             }
@@ -419,6 +409,23 @@ namespace StickyNote
             toggleTopMost();
         }
 
+        private void printToolStripMenuItem1_Click(object sender, EventArgs e)
+        {   //印刷
+            prePrint();
+            printSrtb.print();
+        }
+
+        private void printPreviewToolStripMenuItem_Click(object sender, EventArgs e)
+        {   //印刷プレビュー
+            prePrint();
+            printSrtb.showPrintPreview();
+        }
+
+        private void pageSetupToolStripMenuItem_Click(object sender, EventArgs e)
+        {   //ページ設定
+            printSrtb.printPageSetup();
+        }
+
         private void contextMenuStrip1_Opening(object sender, CancelEventArgs e)
         {   //メニューストリップ表示時
             if (isHyperLink == true)
@@ -479,6 +486,19 @@ namespace StickyNote
 
                 return cp;
             }
+        }
+
+        /// <summary>
+        /// ノートの印刷準備を行う。
+        /// </summary>
+        public void prePrint()
+        {
+            printSrtb.Text = title + "\n\n";
+            printSrtb.SelectAll();
+            printSrtb.SelectionFont =
+                new Font(printSrtb.SelectionFont.FontFamily, 18, printSrtb.SelectionFont.Style);
+            printSrtb.SelectionStart = printSrtb.TextLength;
+            printSrtb.SelectedRtf = sRichTextBox.Rtf;
         }
 
         /// <summary>

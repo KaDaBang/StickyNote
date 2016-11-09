@@ -239,25 +239,6 @@ namespace StickyNote
             return -1;
         }
 
-        /// <summary>
-        /// ノートの印刷を行う。
-        /// </summary>
-        /// <param name="noteForm">印刷するノート</param>
-        public void PrintNote(NoteForm noteForm)
-        {
-            //印刷用テキストボックス作成
-            SuperRichTextBox printSrtb =
-                new SuperRichTextBox();
-            printSrtb.Text = noteForm.title + "\n\n";
-            printSrtb.SelectAll();
-            printSrtb.SelectionFont =
-                new Font(printSrtb.SelectionFont.FontFamily, 18, printSrtb.SelectionFont.Style);
-            printSrtb.SelectionStart = printSrtb.TextLength;
-            printSrtb.SelectedRtf = noteForm.sRichTextBox.Rtf;
-            //印刷
-            printSrtb.print();
-            printSrtb.Dispose();
-        }
 
         private void MainForm_KeyDown(object sender, KeyEventArgs e)
         {
