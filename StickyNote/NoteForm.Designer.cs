@@ -54,6 +54,7 @@ namespace StickyNote
             this.pageSetupToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.plusButton = new System.Windows.Forms.Button();
             this.titleTextBox = new System.Windows.Forms.TextBox();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.closeButton = new StickyNote.DoubleClickButton();
             this.superRichTextBox1 = new StickyNote.SuperRichTextBox();
             this.contextMenuStrip1.SuspendLayout();
@@ -87,19 +88,20 @@ namespace StickyNote
             this.pasteToolStripMenuItem,
             this.fontToolStripMenuItem,
             this.toolStripSeparator1,
+            this.printToolStripMenuItem,
+            this.toolStripSeparator2,
             this.colorChangeToolStripMenuItem,
             this.hyperlinkToolStripMenuItem,
-            this.topMostToolStripMenuItem,
-            this.printToolStripMenuItem});
+            this.topMostToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(231, 218);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(273, 224);
             this.contextMenuStrip1.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip1_Opening);
             // 
             // cutToolStripMenuItem1
             // 
             this.cutToolStripMenuItem1.Name = "cutToolStripMenuItem1";
             this.cutToolStripMenuItem1.ShortcutKeyDisplayString = "Ctrl+X";
-            this.cutToolStripMenuItem1.Size = new System.Drawing.Size(230, 26);
+            this.cutToolStripMenuItem1.Size = new System.Drawing.Size(272, 26);
             this.cutToolStripMenuItem1.Text = "切り取り";
             this.cutToolStripMenuItem1.Click += new System.EventHandler(this.切り取りToolStripMenuItem1_Click);
             // 
@@ -107,7 +109,7 @@ namespace StickyNote
             // 
             this.copyToolStripMenuItem.Name = "copyToolStripMenuItem";
             this.copyToolStripMenuItem.ShortcutKeyDisplayString = "Ctrl+C";
-            this.copyToolStripMenuItem.Size = new System.Drawing.Size(230, 26);
+            this.copyToolStripMenuItem.Size = new System.Drawing.Size(272, 26);
             this.copyToolStripMenuItem.Text = "コピー";
             this.copyToolStripMenuItem.Click += new System.EventHandler(this.コピーToolStripMenuItem_Click);
             // 
@@ -115,7 +117,7 @@ namespace StickyNote
             // 
             this.pasteToolStripMenuItem.Name = "pasteToolStripMenuItem";
             this.pasteToolStripMenuItem.ShortcutKeyDisplayString = "Ctrl+V";
-            this.pasteToolStripMenuItem.Size = new System.Drawing.Size(230, 26);
+            this.pasteToolStripMenuItem.Size = new System.Drawing.Size(272, 26);
             this.pasteToolStripMenuItem.Text = "貼り付け";
             this.pasteToolStripMenuItem.Click += new System.EventHandler(this.貼り付けToolStripMenuItem_Click);
             // 
@@ -124,14 +126,14 @@ namespace StickyNote
             this.fontToolStripMenuItem.Name = "fontToolStripMenuItem";
             this.fontToolStripMenuItem.ShortcutKeyDisplayString = "";
             this.fontToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.F)));
-            this.fontToolStripMenuItem.Size = new System.Drawing.Size(230, 26);
-            this.fontToolStripMenuItem.Text = "フォント";
+            this.fontToolStripMenuItem.Size = new System.Drawing.Size(272, 26);
+            this.fontToolStripMenuItem.Text = "フォント（&F）";
             this.fontToolStripMenuItem.Click += new System.EventHandler(this.フォントToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(227, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(269, 6);
             // 
             // colorChangeToolStripMenuItem
             // 
@@ -143,65 +145,65 @@ namespace StickyNote
             this.OrangeToolStripMenuItem,
             this.WhiteToolStripMenuItem});
             this.colorChangeToolStripMenuItem.Name = "colorChangeToolStripMenuItem";
-            this.colorChangeToolStripMenuItem.Size = new System.Drawing.Size(230, 26);
-            this.colorChangeToolStripMenuItem.Text = "色の変更";
+            this.colorChangeToolStripMenuItem.Size = new System.Drawing.Size(272, 26);
+            this.colorChangeToolStripMenuItem.Text = "色の変更（&C）";
             // 
             // YellowToolStripMenuItem
             // 
             this.YellowToolStripMenuItem.Name = "YellowToolStripMenuItem";
-            this.YellowToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
-            this.YellowToolStripMenuItem.Text = "黄";
+            this.YellowToolStripMenuItem.Size = new System.Drawing.Size(144, 26);
+            this.YellowToolStripMenuItem.Text = "黄（&Y）";
             this.YellowToolStripMenuItem.Click += new System.EventHandler(this.yellowToolStripMenuItem_Click);
             // 
             // GreenToolStripMenuItem
             // 
             this.GreenToolStripMenuItem.Name = "GreenToolStripMenuItem";
-            this.GreenToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
-            this.GreenToolStripMenuItem.Text = "緑";
+            this.GreenToolStripMenuItem.Size = new System.Drawing.Size(144, 26);
+            this.GreenToolStripMenuItem.Text = "緑（&G）";
             this.GreenToolStripMenuItem.Click += new System.EventHandler(this.greenToolStripMenuItem_Click);
             // 
             // BlueToolStripMenuItem
             // 
             this.BlueToolStripMenuItem.Name = "BlueToolStripMenuItem";
-            this.BlueToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
-            this.BlueToolStripMenuItem.Text = "青";
+            this.BlueToolStripMenuItem.Size = new System.Drawing.Size(144, 26);
+            this.BlueToolStripMenuItem.Text = "青（&B）";
             this.BlueToolStripMenuItem.Click += new System.EventHandler(this.blueToolStripMenuItem_Click);
             // 
             // PinkToolStripMenuItem
             // 
             this.PinkToolStripMenuItem.Name = "PinkToolStripMenuItem";
-            this.PinkToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
-            this.PinkToolStripMenuItem.Text = "桃";
+            this.PinkToolStripMenuItem.Size = new System.Drawing.Size(144, 26);
+            this.PinkToolStripMenuItem.Text = "桃（&P）";
             this.PinkToolStripMenuItem.Click += new System.EventHandler(this.pinkToolStripMenuItem_Click);
             // 
             // OrangeToolStripMenuItem
             // 
             this.OrangeToolStripMenuItem.Name = "OrangeToolStripMenuItem";
-            this.OrangeToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
-            this.OrangeToolStripMenuItem.Text = "橙";
+            this.OrangeToolStripMenuItem.Size = new System.Drawing.Size(144, 26);
+            this.OrangeToolStripMenuItem.Text = "橙（&O）";
             this.OrangeToolStripMenuItem.Click += new System.EventHandler(this.orangeToolStripMenuItem_Click);
             // 
             // WhiteToolStripMenuItem
             // 
             this.WhiteToolStripMenuItem.Name = "WhiteToolStripMenuItem";
-            this.WhiteToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
-            this.WhiteToolStripMenuItem.Text = "白";
+            this.WhiteToolStripMenuItem.Size = new System.Drawing.Size(144, 26);
+            this.WhiteToolStripMenuItem.Text = "白（&W）";
             this.WhiteToolStripMenuItem.Click += new System.EventHandler(this.whiteToolStripMenuItem_Click);
             // 
             // hyperlinkToolStripMenuItem
             // 
             this.hyperlinkToolStripMenuItem.Name = "hyperlinkToolStripMenuItem";
             this.hyperlinkToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.H)));
-            this.hyperlinkToolStripMenuItem.Size = new System.Drawing.Size(230, 26);
-            this.hyperlinkToolStripMenuItem.Text = "ハイパーリンク";
+            this.hyperlinkToolStripMenuItem.Size = new System.Drawing.Size(272, 26);
+            this.hyperlinkToolStripMenuItem.Text = "ハイパーリンク（&H）";
             this.hyperlinkToolStripMenuItem.Click += new System.EventHandler(this.hyperlinkToolStripMenuItem_Click);
             // 
             // topMostToolStripMenuItem
             // 
             this.topMostToolStripMenuItem.Name = "topMostToolStripMenuItem";
             this.topMostToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.M)));
-            this.topMostToolStripMenuItem.Size = new System.Drawing.Size(230, 26);
-            this.topMostToolStripMenuItem.Text = "最前面に表示";
+            this.topMostToolStripMenuItem.Size = new System.Drawing.Size(272, 26);
+            this.topMostToolStripMenuItem.Text = "最前面に表示（&M）";
             this.topMostToolStripMenuItem.Click += new System.EventHandler(this.topMostToolStripMenuItem_Click);
             // 
             // printToolStripMenuItem
@@ -211,15 +213,15 @@ namespace StickyNote
             this.printPreviewToolStripMenuItem,
             this.pageSetupToolStripMenuItem});
             this.printToolStripMenuItem.Name = "printToolStripMenuItem";
-            this.printToolStripMenuItem.Size = new System.Drawing.Size(230, 26);
-            this.printToolStripMenuItem.Text = "印刷";
+            this.printToolStripMenuItem.Size = new System.Drawing.Size(272, 26);
+            this.printToolStripMenuItem.Text = "印刷（&P）";
             // 
             // printToolStripMenuItem1
             // 
             this.printToolStripMenuItem1.Name = "printToolStripMenuItem1";
             this.printToolStripMenuItem1.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.P)));
-            this.printToolStripMenuItem1.Size = new System.Drawing.Size(271, 26);
-            this.printToolStripMenuItem1.Text = "印刷";
+            this.printToolStripMenuItem1.Size = new System.Drawing.Size(311, 26);
+            this.printToolStripMenuItem1.Text = "印刷（&P）";
             this.printToolStripMenuItem1.Click += new System.EventHandler(this.printToolStripMenuItem1_Click);
             // 
             // printPreviewToolStripMenuItem
@@ -227,8 +229,8 @@ namespace StickyNote
             this.printPreviewToolStripMenuItem.Name = "printPreviewToolStripMenuItem";
             this.printPreviewToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
             | System.Windows.Forms.Keys.P)));
-            this.printPreviewToolStripMenuItem.Size = new System.Drawing.Size(271, 26);
-            this.printPreviewToolStripMenuItem.Text = "印刷プレビュー";
+            this.printPreviewToolStripMenuItem.Size = new System.Drawing.Size(311, 26);
+            this.printPreviewToolStripMenuItem.Text = "印刷プレビュー（&V）";
             this.printPreviewToolStripMenuItem.Click += new System.EventHandler(this.printPreviewToolStripMenuItem_Click);
             // 
             // pageSetupToolStripMenuItem
@@ -236,8 +238,8 @@ namespace StickyNote
             this.pageSetupToolStripMenuItem.Name = "pageSetupToolStripMenuItem";
             this.pageSetupToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Alt) 
             | System.Windows.Forms.Keys.P)));
-            this.pageSetupToolStripMenuItem.Size = new System.Drawing.Size(271, 26);
-            this.pageSetupToolStripMenuItem.Text = "ページ設定";
+            this.pageSetupToolStripMenuItem.Size = new System.Drawing.Size(311, 26);
+            this.pageSetupToolStripMenuItem.Text = "ページ設定（&S）";
             this.pageSetupToolStripMenuItem.Click += new System.EventHandler(this.pageSetupToolStripMenuItem_Click);
             // 
             // plusButton
@@ -274,6 +276,11 @@ namespace StickyNote
             this.titleTextBox.Visible = false;
             this.titleTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
             this.titleTextBox.Leave += new System.EventHandler(this.textBox1_Leave);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(269, 6);
             // 
             // closeButton
             // 
@@ -322,6 +329,7 @@ namespace StickyNote
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(198, 198);
+            this.ContextMenuStrip = this.contextMenuStrip1;
             this.ControlBox = false;
             this.Controls.Add(this.titleTextBox);
             this.Controls.Add(this.closeButton);
@@ -377,6 +385,7 @@ namespace StickyNote
         private ToolStripMenuItem printToolStripMenuItem1;
         private ToolStripMenuItem printPreviewToolStripMenuItem;
         private ToolStripMenuItem pageSetupToolStripMenuItem;
+        private ToolStripSeparator toolStripSeparator2;
     }
 
     /// <summary>
