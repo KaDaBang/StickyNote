@@ -76,7 +76,7 @@ namespace StickyNote
 
         private void NoteForm_Load(object sender, EventArgs e)
         {
-            FitGrid();
+            fitGrid();
         }
 
         private void NoteForm_Activated(object sender, EventArgs e)
@@ -128,7 +128,7 @@ namespace StickyNote
 
         private void titleLabel_MouseUp(object sender, MouseEventArgs e)
         {   //位置変更が終わったとき
-            FitGrid();
+            fitGrid();
         }
 
         /********************************************************
@@ -345,7 +345,7 @@ namespace StickyNote
 
         private void NoteForm_ResizeEnd(object sender, EventArgs e)
         {   //サイズ変更が終わったとき
-            FitGrid();
+            fitGrid();
         }
 
         /********************************************************
@@ -517,7 +517,7 @@ namespace StickyNote
             return Math.Round(value * pow, mode) / pow;
         }
 
-        private void FitGrid()
+        private void fitGrid()
         {   //サイズと位置をグリッドに合わせる
             if (Height % grid == 0 && Width % grid == 0 && Left % grid == 0 && Top % grid == 0)
             {   //すでにグリッドに従っている場合
@@ -544,6 +544,16 @@ namespace StickyNote
                 Top = (int)Round(Top * 2, -1, MidpointRounding.AwayFromZero) / 2;
             }
 
+
+        }
+
+        private void moveWindow()
+        {   //キーボードでウィンドウを移動
+            
+        }
+
+        private void changeSize()
+        {   //キーボードでサイズ変更
 
         }
 
