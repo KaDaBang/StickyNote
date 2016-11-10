@@ -71,11 +71,11 @@ namespace StickyNote
         public NoteForm()
         {
             InitializeComponent();
-            superRichTextBox1.BackColor = BackColor;
         }
 
         private void NoteForm_Load(object sender, EventArgs e)
         {
+            superRichTextBox1.BackColor = BackColor;
             fitGrid();
         }
 

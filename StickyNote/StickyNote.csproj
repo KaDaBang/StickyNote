@@ -77,6 +77,9 @@
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="NoteForm.ja-JP.resx">
+      <DependentUpon>NoteForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="NoteForm.resx">
       <DependentUpon>NoteForm.cs</DependentUpon>
     </EmbeddedResource>

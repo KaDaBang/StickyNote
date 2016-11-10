@@ -18,6 +18,7 @@ namespace StickyNote
         string rtfName;     //rtfファイルの名前
 
         private List<Form> notes = new List<Form>();
+        private LocationComparer comp = new LocationComparer();
 
         /// <summary>
         /// メインフォームのコンストラクタ
@@ -29,16 +30,15 @@ namespace StickyNote
 
         private void MainForm_Load(object sender, EventArgs e)
         {   //MainFormロード時
-            //ノート読み込み
-            loadNotes();
+            loadNotes();        //ノートの読み込み
+            notes.Sort(comp);   //ノート切替順並び替え
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {   //終了時
-            //ノート保存
             try
             {
-                saveNotes();
+                saveNotes();    //ノート保存
             }
             catch
             {   //ノート保存に失敗したら、閉じるのをキャンセルする。
@@ -53,8 +53,8 @@ namespace StickyNote
         public void newNote()
         {
             NoteForm noteForm = new NoteForm();
-            notes.Add(noteForm);
-            noteForm.Owner = this;
+            notes.Add(noteForm);    //ノートのコレクションに追加
+            noteForm.Owner = this;  //MainFormを親フォームとして渡す。
             noteForm.Show();
         }
 
@@ -63,8 +63,7 @@ namespace StickyNote
         /// </summary>
         public void saveNotes()
         {
-            //フォルダ作成
-            makeDir();
+            makeDir();  //ノート保存用ディレクトリの作成
 
             //既にあるデータをクリア
             fileDel(@".\Notes");
@@ -72,11 +71,12 @@ namespace StickyNote
 
             //XmlSerializerオブジェクトを作成
             XmlSerializer serializer = new XmlSerializer(typeof(Settings));
-            for (int i = 1; i < Application.OpenForms.Count; i++)
+
+            for (int i = 0; i < notes.Count; i++)
             {   //各NoteFormにループ処理
                 //保存用クラスのインスタンス作成
                 Settings settings = new Settings();
-                NoteForm nf = (NoteForm)Application.OpenForms[i];
+                NoteForm nf = (NoteForm)notes[i];
                 //保存用インスタンスにプロパティセット
                 settings.Size = nf.Size;
                 settings.Point = nf.Location;
@@ -109,6 +109,7 @@ namespace StickyNote
             //ノートを読込
             IEnumerable<string> files = Directory.EnumerateFiles(@".\Notes");
             XmlSerializer serializer = new XmlSerializer(typeof(Settings));
+
             foreach (string file in files)
             {
                 try
@@ -194,7 +195,6 @@ namespace StickyNote
         {
             Form targetNote;    //切り替え先のノート
 
-            LocationComparer comp = new LocationComparer();
             notes.Sort(comp);
 
             int noteId = checkNoteId();
