@@ -285,8 +285,13 @@ namespace StickyNote
         [DllImport("USER32.dll")]
         private static extern IntPtr SendMessage(IntPtr hWnd, int msg, IntPtr wp, IntPtr lp);
 
-        // Render the contents of the RichTextBox for printing
-        //	Return the last character printed + 1 (printing start from this point for next page)
+        /// <summary>
+        /// Prints the specified character from.
+        /// </summary>
+        /// <param name="charFrom">The character from.</param>
+        /// <param name="charTo">The character to.</param>
+        /// <param name="e">The <see cref="PrintPageEventArgs"/> instance containing the event data.</param>
+        /// <returns></returns>
         public int Print(int charFrom, int charTo, PrintPageEventArgs e)
         {
             //Calculate the area to render and print

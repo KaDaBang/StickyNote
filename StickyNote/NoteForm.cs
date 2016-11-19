@@ -272,7 +272,7 @@ namespace StickyNote
                 ((MainForm)Owner).changeActiveNote(false);
             }
 
-            if (e.KeyCode == Keys.F4 && e.Alt )
+            if (e.KeyCode == Keys.F4 && e.Alt)
             {   //ノート閉じる
                 ((MainForm)Owner).noteClose(this);
             }
@@ -493,10 +493,17 @@ namespace StickyNote
         /// </summary>
         public void prePrint()
         {
-            printSrtb.Text = title + "\n\n";
-            printSrtb.SelectAll();
-            printSrtb.SelectionFont =
-                new Font(printSrtb.SelectionFont.FontFamily, 18, printSrtb.SelectionFont.Style);
+            //プリント用SRTBのテキストを初期化
+            printSrtb.Text = "";
+            if (title != "")
+            {   //タイトルが空でなければ
+                printSrtb.Text = title + "\n\n";
+                //タイトル部分の書式設定
+                printSrtb.SelectAll();
+                printSrtb.SelectionFont =
+                    new Font(printSrtb.SelectionFont.FontFamily, 18, printSrtb.SelectionFont.Style);
+            }
+            //プリント用SRTBに本文をコピー
             printSrtb.SelectionStart = printSrtb.TextLength;
             printSrtb.SelectedRtf = sRichTextBox.Rtf;
         }
@@ -549,7 +556,7 @@ namespace StickyNote
 
         private void moveWindow()
         {   //キーボードでウィンドウを移動
-            
+
         }
 
         private void changeSize()
